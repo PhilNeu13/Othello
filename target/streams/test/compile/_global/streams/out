@@ -1,0 +1,9 @@
+[0m[[0m[31merror[0m] [0m[0m[31m[31m-- [E008] Not Found Error: /home/phil/othello/src/test/scala/Test.scala:3:11 ---[0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m3 |[0m[33mimport[0m org.scalatest.wordspec.AnyWordSpec[0m
+[0m[[0m[31merror[0m] [0m[0m[31m[31m  |[0m       ^^^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m  |[0m       value scalatest is not a member of org[0m
+[0m[[0m[31merror[0m] [0m[0m[31m[31m-- [E008] Not Found Error: /home/phil/othello/src/test/scala/Test.scala:4:11 ---[0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m4 |[0m[33mimport[0m org.scalatest.matchers.should.Matchers._[0m
+[0m[[0m[31merror[0m] [0m[0m[31m[31m  |[0m       ^^^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m  |[0m       value scalatest is not a member of org[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

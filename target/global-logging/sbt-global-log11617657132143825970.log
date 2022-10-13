@@ -1,0 +1,36 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(;Test/compile; collectAnalyses, None, Some(CommandSource(network-1)))[0m
+[0m[[0m[0mdebug[0m] [0m[0munmatched Processing event for requestId None: None[0m
+[0m[[0m[0mdebug[0m] [0m[0munmatched Done event for requestId None: None[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(Test/compile, None, Some(CommandSource(network-1)))[0m
+[0m[[0m[0mdebug[0m] [0m[0munmatched Processing event for requestId None: None[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / compile[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0mdebug[0m] [0m[0mjsonRpcNotify: JsonRpcNotificationMessage(2.0, build/taskStart, {"taskId":{"id":"47","parents":[]},"eventTime":1665598763756,"message":"Compiling root","dataKind":"compile-task","data":{"target":{"uri":"file:/home/phil/othello/#root/Compile"}}})[0m
+[0m[[0m[0mdebug[0m] [0m[0mjsonRpcNotify: JsonRpcNotificationMessage(2.0, build/taskFinish, {"taskId":{"id":"47","parents":[]},"eventTime":1665598763758,"message":"Compiled root","status":1,"dataKind":"compile-report","data":{"target":{"uri":"file:/home/phil/othello/#root/Compile"},"errors":0,"warnings":0,"time":2}})[0m
+[0m[[0m[0mdebug[0m] [0m[0mjsonRpcNotify: JsonRpcNotificationMessage(2.0, build/taskStart, {"taskId":{"id":"48","parents":[]},"eventTime":1665598763759,"message":"Compiling root-test","dataKind":"compile-task","data":{"target":{"uri":"file:/home/phil/othello/#root/Test"}}})[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/phil/othello/target/scala-3.2.0/test-classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mjsonRpcNotify: JsonRpcNotificationMessage(2.0, build/logMessage, {"type":3,"message":"compiling 1 Scala source to /home/phil/othello/target/scala-3.2.0/test-classes ..."})[0m
+[0m[[0m[0mdebug[0m] [0m[0mjsonRpcNotify: JsonRpcNotificationMessage(2.0, build/publishDiagnostics, {"textDocument":{"uri":"file:///home/phil/othello/src/test/scala/Test.scala"},"buildTarget":{"uri":"file:/home/phil/othello/#root/Test"},"diagnostics":[{"range":{"start":{"line":2,"character":7},"end":{"line":2,"character":20}},"severity":1,"source":"sbt","message":"value scalatest is not a member of org"}],"reset":false})[0m
+[0m[[0m[31merror[0m] [0m[0m[31m[31m-- [E008] Not Found Error: /home/phil/othello/src/test/scala/Test.scala:3:11 ---[0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m3 |[0m[33mimport[0m org.scalatest.wordspec.AnyWordSpec[0m
+[0m[[0m[31merror[0m] [0m[0m[31m[31m  |[0m       ^^^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m  |[0m       value scalatest is not a member of org[0m
+[0m[[0m[0mdebug[0m] [0m[0mjsonRpcNotify: JsonRpcNotificationMessage(2.0, build/logMessage, {"type":1,"message":"\u001b[31m\u001b[31m-- [E008] Not Found Error: /home/phil/othello/src/test/scala/Test.scala:3:11 ---\u001b[0m\u001b[0m\n\u001b[31m3 |\u001b[0m\u001b[33mimport\u001b[0m org.scalatest.wordspec.AnyWordSpec\n\u001b[31m\u001b[31m  |\u001b[0m       ^^^^^^^^^^^^^\u001b[0m\n\u001b[31m  |\u001b[0m       value scalatest is not a member of org"})[0m
+[0m[[0m[0mdebug[0m] [0m[0mjsonRpcNotify: JsonRpcNotificationMessage(2.0, build/publishDiagnostics, {"textDocument":{"uri":"file:///home/phil/othello/src/test/scala/Test.scala"},"buildTarget":{"uri":"file:/home/phil/othello/#root/Test"},"diagnostics":[{"range":{"start":{"line":3,"character":7},"end":{"line":3,"character":20}},"severity":1,"source":"sbt","message":"value scalatest is not a member of org"}],"reset":false})[0m
+[0m[[0m[31merror[0m] [0m[0m[31m[31m-- [E008] Not Found Error: /home/phil/othello/src/test/scala/Test.scala:4:11 ---[0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m4 |[0m[33mimport[0m org.scalatest.matchers.should.Matchers._[0m
+[0m[[0m[31merror[0m] [0m[0m[31m[31m  |[0m       ^^^^^^^^^^^^^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m  |[0m       value scalatest is not a member of org[0m
+[0m[[0m[0mdebug[0m] [0m[0mjsonRpcNotify: JsonRpcNotificationMessage(2.0, build/logMessage, {"type":1,"message":"\u001b[31m\u001b[31m-- [E008] Not Found Error: /home/phil/othello/src/test/scala/Test.scala:4:11 ---\u001b[0m\u001b[0m\n\u001b[31m4 |\u001b[0m\u001b[33mimport\u001b[0m org.scalatest.matchers.should.Matchers._\n\u001b[31m\u001b[31m  |\u001b[0m       ^^^^^^^^^^^^^\u001b[0m\n\u001b[31m  |\u001b[0m       value scalatest is not a member of org"})[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[0mdebug[0m] [0m[0mjsonRpcNotify: JsonRpcNotificationMessage(2.0, build/logMessage, {"type":1,"message":"two errors found"})[0m
+[0m[[0m[0mdebug[0m] [0m[0mjsonRpcNotify: JsonRpcNotificationMessage(2.0, build/publishDiagnostics, {"textDocument":{"uri":"file:///home/phil/othello/src/test/scala/Test.scala"},"buildTarget":{"uri":"file:/home/phil/othello/#root/Test"},"diagnostics":[{"range":{"start":{"line":2,"character":7},"end":{"line":2,"character":20}},"severity":1,"source":"sbt","message":"value scalatest is not a member of org"},{"range":{"start":{"line":3,"character":7},"end":{"line":3,"character":20}},"severity":1,"source":"sbt","message":"value scalatest is not a member of org"}],"reset":true})[0m
+[0m[[0m[0mdebug[0m] [0m[0mjsonRpcNotify: JsonRpcNotificationMessage(2.0, build/taskFinish, {"taskId":{"id":"48","parents":[]},"eventTime":1665598764067,"message":"Compiled root-test","status":2,"dataKind":"compile-report","data":{"target":{"uri":"file:/home/phil/othello/#root/Test"},"errors":2,"warnings":0,"time":308}})[0m
+[0m[[0m[0mdebug[0m] [0m[0mForcing garbage collection...[0m
+[0m[[0m[0mdebug[0m] [0m[0munmatched json error for requestId None: {"code":-32603,"message":"(Test / \u001b[31mcompileIncremental\u001b[0m) Compilation failed"}[0m
+[0m[[0m[31merror[0m] [0m[0m(Test / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[0mdebug[0m] [0m[0mjsonRpcNotify: JsonRpcNotificationMessage(2.0, build/logMessage, {"type":1,"message":"(Test / \u001b[31mcompileIncremental\u001b[0m) Compilation failed"})[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 0 s, completed 12.10.2022, 20:19:24[0m
+[0m[[0m[0mdebug[0m] [0m[0munmatched Done event for requestId None: None[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0mUnhandled request received: shutdown: JsonRpcRequestMessage(2.0, ♨6, shutdown, null})[0m
