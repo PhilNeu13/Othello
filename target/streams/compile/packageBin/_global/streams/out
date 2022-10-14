@@ -1,13 +1,1 @@
-[0m[[0m[0mdebug[0m] [0m[0mPackaging /home/phil/Dokumente/Othello/target/scala-3.2.0/othello_3-0.1.0-SNAPSHOT.jar ...[0m
-[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Othello.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /home/phil/Dokumente/Othello/target/scala-3.2.0/classes/Othello.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$package.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /home/phil/Dokumente/Othello/target/scala-3.2.0/classes/Main$package.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$package$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /home/phil/Dokumente/Othello/target/scala-3.2.0/classes/Main$package$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$package.tasty[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /home/phil/Dokumente/Othello/target/scala-3.2.0/classes/Main$package.tasty[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Othello.tasty[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /home/phil/Dokumente/Othello/target/scala-3.2.0/classes/Othello.tasty[0m
-[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
+[0m[[0m[0mdebug[0m] [0m[0mJar uptodate: /home/phil/Dokumente/Othello/target/scala-3.2.0/othello_3-0.1.0-SNAPSHOT.jar[0m
