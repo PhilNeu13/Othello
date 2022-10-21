@@ -5,7 +5,7 @@
 This is a normal sbt project. You can compile code with `sbt compile`, run it with `sbt run`, and `sbt console` will start a Scala 3 REPL.
 
 <<<<<<< HEAD
-New branch test!
+New branch test
 =======
 This is a test for a git working space.
 
