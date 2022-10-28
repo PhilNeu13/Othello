@@ -21,6 +21,10 @@ class OthelloSpec extends AnyWordSpec {
       cells(1, 2) should be("| | |" + eol)
       cells(2, 1) should be("|  |" + eol)
     }
+    "have mesh as String of form '+---+\n|   |\n+---+' " in {
+      mesh() should be("+---+\n|   |\n+---+" + eol)
+    }
+    // main test??
   }
 
 }
