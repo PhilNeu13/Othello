@@ -14,6 +14,11 @@ class OthelloSpec extends AnyWordSpec {
     "have mesh as String of form '+---+\n|   |\n+---+'" in {
       mesh() should be("+---+" + eol + "|   |" + eol + "+---+" + eol)
     }
+    "have a scalable mesh" in {
+      mesh(1,1) should be("+-+" + eol + "| |" + eol + "+-+" + eol)
+      mesh(2,1) should be("+--+" + eol + "|  |" + eol + "+--+" + eol)
+      mesh(1,2) should be("+-+-+" + eol + "| | |" + eol + "+-+-+" + eol + "| | |" + eol + "+-+-+" + eol)
+    }
     "have scalable bar" in {
       bar(1,1) should be("+-+" + eol)
       bar(2,1) should be("+--+" + eol)
@@ -25,5 +30,5 @@ class OthelloSpec extends AnyWordSpec {
       cells(1,2) should be("| | |" + eol)
     }
   }  
-}
 
+}
