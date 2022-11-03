@@ -12,6 +12,7 @@ import scala.io.StdIn._
   getInputAndPrintLoop(field)
 
 def getInputAndPrintLoop(field: Field): Unit =
+  print("To Play: Type in <W/B><x_value><y_value>!\nTo quit: Type q!\n")
   val input = readLine
   parseInput(input) match {
     case None => field
