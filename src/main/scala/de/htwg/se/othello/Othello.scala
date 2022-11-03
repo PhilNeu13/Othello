@@ -1,18 +1,37 @@
 package de.htwg.se.othello
 
-import de.htwg.se.sudoku.model.{Grid}
+import de.htwg.se.othello.model.{Stone,Matrix,Field}
+import de.htwg.se.othello.aview.Tui
+import scala.io.StdIn._
 
-@main def Othello: Unit = 
+@main def Othello: Unit =
   println("Welcome to Othello!")
-  println(mesh(cellNum = 8))
+  val field = new Field(6, Stone.Empty)
+  println(field.toString)
+  getInputAndPrintLoop(field)
 
-
-val eol = sys.props("line.separator")
-def bar(cellwidth: Int = 3, cellNum: Int = 5) = ("+" + "-" * cellwidth) * cellNum + "+" + eol
-def cells(cellwidth: Int = 3, cellNum: Int = 5) = ("|" + " " * cellwidth) * cellNum + "|" + eol
-def mesh(cellwidth: Int = 3, cellNum: Int = 1) = (bar(cellwidth, cellNum) + cells(cellwidth, cellNum)) * cellNum + bar(cellwidth, cellNum)
-
-
-var grid = new Grid(8)
-
-def b: Unit = {println("Grid : " + grid.toString) }
+def getInputAndPrintLoop(field: Field): Unit =
+  print("To Play: Type in <W/B><x_value><y_value>!\nTo quit: Type q!\n")
+  val input = readLine
+  parseInput(input) match {
+    case None => field
+    case Some(newfield) =>
+      println(newfield)
+      getInputAndPrintLoop(newfield)
+  }
+  def parseInput(input: String): Option[Field] =
+    input match
+      case "q" => None
+      case _ => {
+        val chars = input.toCharArray
+        val stone = chars(0) match {
+          case 'W' => Stone.W
+          case 'w' => Stone.W
+          case 'B' => Stone.B
+          case 'b' => Stone.B
+          case _   => Stone.Empty
+        }
+        val x = chars(1).toString.toInt
+        val y = chars(2).toString.toInt
+        Some(field.put(stone, y - 1, x - 1))
+      }
