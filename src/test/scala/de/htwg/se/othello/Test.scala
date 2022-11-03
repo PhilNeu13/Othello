@@ -1,5 +1,5 @@
-// For more information on writing tests, see
-// https://scalameta.org/munit/docs/getting-started.html
+package de.htwg.se.othello
+
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 
