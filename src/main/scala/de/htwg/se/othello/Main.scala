@@ -27,9 +27,7 @@ def getInputAndPrintLoop(field: Field): Unit =
         val chars = input.toCharArray
         val stone = chars(0) match {
           case 'W' => Stone.W
-          case 'w' => Stone.W
           case 'B' => Stone.B
-          case 'b' => Stone.B
           case _   => Stone.Empty
         }
         val x = chars(1).toString.toInt
