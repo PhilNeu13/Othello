@@ -8,9 +8,9 @@ import de.htwg.se.othello.model.Stone
 
 class PlayerSpec extends AnyWordSpec {
   "A Player" should {
-    val player = Player(name = "Oscar", stone = Stone.B)
+    val player = Player(name = "Lukas", stone = Stone.B)
     "have a name" in {
-      player.name should be("Oscar")
+      player.name should be("Lukas")
     }
     "have initialy zero points" in {
       player.points should be(0)
