@@ -12,22 +12,24 @@ class TUI(controller: Controller) extends Observer:
     println(controller.field.toString)
     getInputAndPrintLoop()
 
-  override def update = ???
+  override def update = {}
 
   def getInputAndPrintLoop(): Unit =
     println("To Play: Type in <W/B><x_value><y_value>!\nTo quit: Type q!\n")
     val input = readLine
-    input match
+    input match {
       case "q" =>
       case _ => {
         val chars = input.toCharArray
-        val stone = chars(0) match
-          case 'X' => Stone.B
-          case 'O' => Stone.W
+        val stone = chars(0) match {
+          case 'B' => Stone.B
+          case 'W' => Stone.W
           case _   => Stone.Empty
+        }
         val x = chars(1).toString.toInt
         val y = chars(2).toString.toInt
-        controller.put(stone, x, y)
+        controller.put(stone, x - 1, y - 1)
         println(controller.toString)
         getInputAndPrintLoop()
       }
+    }

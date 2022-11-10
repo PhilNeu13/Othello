@@ -1,5 +1,4 @@
-package de.htwg.se.othello
-package observe
+package de.htwg.se.othello.observe
 
 trait Observable {
   var subscribers: Vector[Observer] = Vector()
