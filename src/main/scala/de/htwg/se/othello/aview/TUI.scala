@@ -11,11 +11,11 @@ class TUI(controller: Controller) extends Observer:
 
   def start =
     println(controller.field.toString)
-    getInputAndPrintLoop()
+    makeAMove()
 
   override def update = {}
 
-  def getInputAndPrintLoop(): Unit =
+  def makeAMove(): Unit =
     println("To Play: Type in <W/B><x_value><y_value>!\nTo quit: Type q!\n")
     val input = readLine
     input match {
@@ -31,6 +31,6 @@ class TUI(controller: Controller) extends Observer:
         val y = chars(2).toString.toInt
         controller.put(stone, x - 1, y - 1)
         println(controller.toString)
-        getInputAndPrintLoop()
+        makeAMove()
       }
     }
