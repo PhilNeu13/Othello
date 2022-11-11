@@ -8,7 +8,8 @@ import observe.Observer
 
 class TUI(controller: Controller) extends Observer:
   controller.add(this)
-  def run =
+
+  def start =
     println(controller.field.toString)
     getInputAndPrintLoop()
 

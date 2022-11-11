@@ -12,4 +12,4 @@ import aview.TUI
   val field = new Field(6, Stone.Empty)
   val controller = Controller(field)
   val tui = TUI(controller)
-  tui.run
+  tui.start
