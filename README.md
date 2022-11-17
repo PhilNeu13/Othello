@@ -4,11 +4,7 @@
 
 This is a normal sbt project. You can compile code with `sbt compile`, run it with `sbt run`, and `sbt console` will start a Scala 3 REPL.
 
-<<<<<<< HEAD
 [![Coverage Status](https://coveralls.io/repos/github/PhilNeu13/Othello/badge.svg?branch=main)](https://coveralls.io/github/PhilNeu13/Othello?branch=main)
-=======
-[![Coverage Status](https://coveralls.io/repos/github/PhilNeu13/Othello/badge.svg)](https://coveralls.io/github/PhilNeu13/Othello)
->>>>>>> accefc562e6fa33a46fc93b2a0d7a58fcd4bb52b
 
 For more information on the sbt-dotty plugin, see the test
 [scala3-example-project](https://github.com/scala/scala3-example-project/blob/main/README.md).
