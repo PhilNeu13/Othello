@@ -20,7 +20,7 @@ class TUI(controller: Controller) extends Observer:
   def controllMove(): Unit =
     println("To Play: Type in <W/B><x_value><y_value>!\nTo quit: Type q!\n")
     makeAMove(readLine) match
-      case None       =>
+      case None       => sys.exit(0)
       case Some(move) => controller.doAndNotify(controller.put, move)
     controllMove()
 
