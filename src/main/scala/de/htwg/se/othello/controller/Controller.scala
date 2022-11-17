@@ -1,12 +1,13 @@
 package de.htwg.se.othello
 package controller
 
-import model.Field
-import model.Stone
+import model.{Field, Stone, MoveCoordinates}
 import observe.{Observable, Observer}
 
 case class Controller(var field: Field) extends Observable:
-  def put(stone: Stone, x: Int, y: Int): Unit =
-    field = field.put(stone, x, y)
+  def doAndNotify(doThis: MoveCoordinates => Field, move: MoveCoordinates) =
+    field = doThis(move)
     notifyObservers
+  def put(move: MoveCoordinates): Field =
+    field.put(move.stone, move.x, move.y)
   override def toString: String = field.toString
