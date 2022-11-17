@@ -10,6 +10,17 @@ class TUI(controller: Controller) extends Observer:
   controller.add(this)
 
   def start =
+    println("Before starting please enter the name of the first player!")
+    val namePlayer1 = readLine()
+    controller.addFirstPlayer(namePlayer1)
+    println("Player 1: " + namePlayer1 + " plays Stone B\n")
+    println(
+      "Now please enter the name of the second player to play."
+    )
+    val namePlayer2 = readLine()
+    println("Player 2: " + namePlayer2 + " plays Stone W\n")
+    controller.addSecondPlayer(namePlayer2)
+    println("")
     println(controller.field.toString)
     controllMove()
 
