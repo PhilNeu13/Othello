@@ -18,3 +18,13 @@ lazy val root = project
       ), // note XML formatter
       "utf-8")
   )
+jacocoReportSettings := JacocoReportSettings(
+  "Jacoco Coverage Report",
+  None,
+  JacocoThresholds(),
+  Seq(
+    JacocoReportFormats.ScalaHTML,
+    JacocoReportFormats.XML
+  ), // note XML formatter
+  "utf-8"
+)
