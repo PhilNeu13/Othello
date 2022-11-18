@@ -16,7 +16,7 @@ class PlayerSpec extends AnyWordSpec with Matchers {
         player.stone should be(Stone.B)
       }
       "have a nice String representation" in {
-        player.toString should be("Phil B")
+        player.toString should be("Phil has Stone B")
       }
     }
   }

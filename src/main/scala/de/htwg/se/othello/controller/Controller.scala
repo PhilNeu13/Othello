@@ -5,13 +5,14 @@ import model.{Field, Stone, MoveCoordinates, Player}
 import observe.{Observable, Observer}
 
 case class Controller(var field: Field) extends Observable:
-  private val players = new Array[Player](2)
 
-  def addFirstPlayer(playerName: String) = {
-    players(0) = Player(playerName, Stone.B)
+  def addFirstPlayer(playerName: String): String = {
+    val player1 = Player(playerName, Stone.B)
+    return player1.toString
   }
-  def addSecondPlayer(playerName: String) = {
-    players(1) = Player(playerName, Stone.W)
+  def addSecondPlayer(playerName: String): String = {
+    val player2 = Player(playerName, Stone.W)
+    return player2.toString
   }
 
   def doAndNotify(doThis: MoveCoordinates => Field, move: MoveCoordinates) =
