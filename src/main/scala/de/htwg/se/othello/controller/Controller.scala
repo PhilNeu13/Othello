@@ -1,23 +1,23 @@
 package de.htwg.se.othello
 package controller
 
-import model.{Field, Stone, MoveCoordinates, Player}
+import model.{Field, Stone, MoveCoordinates, Player, Game, PlayerState}
 import observe.{Observable, Observer}
 
 case class Controller(var field: Field) extends Observable:
 
-  def addFirstPlayer(playerName: String): String = {
-    val player1 = Player(playerName, Stone.B)
-    return player1.toString
-  }
-  def addSecondPlayer(playerName: String): String = {
-    val player2 = Player(playerName, Stone.W)
-    return player2.toString
-  }
+  def addFirstPlayer(playerName: String): String =
+    Player(playerName, Stone.B).toString
+
+  def addSecondPlayer(playerName: String): String =
+    Player(playerName, Stone.W).toString
 
   def doAndNotify(doThis: MoveCoordinates => Field, move: MoveCoordinates) =
     field = doThis(move)
     notifyObservers
   def put(move: MoveCoordinates): Field =
-    field.put(move.stone, move.x, move.y)
+    if (field.get(move.x, move.y) == Stone.Empty)
+      PlayerState.changeState
+      field.put(move.stone, move.x, move.y)
+    else field
   override def toString: String = field.toString
