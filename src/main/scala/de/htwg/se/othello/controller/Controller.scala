@@ -2,7 +2,9 @@ package de.htwg.se.othello
 package controller
 
 import model.{Field, Stone, MoveCoordinates, Player, Game, PlayerState}
-import observe.{Observable, Observer}
+import util.{Observable, Observer}
+import util.CheckStone
+import scala.collection.mutable.ListBuffer
 
 case class Controller(var field: Field) extends Observable:
 

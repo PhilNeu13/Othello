@@ -9,7 +9,7 @@ import aview.TUI
 
 @main def Othello: Unit =
   println("\nWelcome to Othello!")
-  val field = new Field(6, Stone.Empty)
+  val field = new Field(8, Stone.Empty)
   val controller = Controller(field)
   val tui = TUI(controller)
   tui.start

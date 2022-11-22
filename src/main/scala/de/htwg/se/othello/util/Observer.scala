@@ -1,5 +1,5 @@
 package de.htwg.se.othello
-package observe
+package util
 
 trait Observer:
   def update: Unit

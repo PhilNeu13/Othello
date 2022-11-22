@@ -4,11 +4,11 @@ package aview
 import controller.Controller
 import model.{Stone, MoveCoordinates, Player, Field, Game, PlayerState}
 import scala.io.StdIn.readLine
-import observe.Observer
+import util.Observer
 
 class TUI(controller: Controller) extends Observer:
   controller.add(this)
-  var pState = PlayerState
+  val pState = PlayerState
 
   def start =
     println("Before starting please enter the name of the first player!")
@@ -45,6 +45,6 @@ class TUI(controller: Controller) extends Observer:
         }
         val x = chars(1).toString.toInt
         val y = chars(2).toString.toInt
-        Some(MoveCoordinates(stone, x - 1, y - 1))
+        Some(MoveCoordinates(stone, x, y))
       }
     }

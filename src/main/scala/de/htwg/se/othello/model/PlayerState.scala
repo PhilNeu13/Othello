@@ -23,7 +23,7 @@ object PlayerState {
   def player1: Int = 1
   def player2: Int = 2
 
-  def strategy(state: Int) =
+  def strategy(turn: Int) =
     if (turn == 1)
       stratPlayer1
     else

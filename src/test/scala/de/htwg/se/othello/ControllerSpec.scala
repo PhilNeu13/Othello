@@ -5,7 +5,7 @@ package controller
 import model.{Field, MoveCoordinates, Stone}
 import org.scalatest.matchers.should.Matchers._
 import org.scalatest.wordspec.AnyWordSpec
-import observe.Observer
+import util.Observer
 
 class ControllerSpec extends AnyWordSpec {
   "The Controller" should {
