@@ -2,6 +2,10 @@ package de.htwg.se.othello
 package util
 import de.htwg.se.othello.model.{Field, MoveCoordinates, Stone}
 import scala.collection.mutable.ListBuffer
+<<<<<<< HEAD
+=======
+//import scala.annotation.meta.field.apply
+>>>>>>> 6cc056d0aa64d760bcba8ec77628f029bed0764c
 
 object CheckStone {
 
