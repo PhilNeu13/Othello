@@ -6,35 +6,21 @@ import model.{Stone, MoveCoordinates, Player, Field}
 import scala.io.StdIn.readLine
 import util.{Observer, PlayerState}
 
-class TUI(controller: Controller) extends Observer:
+class TUI(controller: Controller) extends UI(controller):
   controller.add(this)
   val pState = PlayerState
-
-  def start =
-    println("Before starting please enter the name of the first player!")
-    val namePlayer1 = readLine()
-    println(controller.addFirstPlayer(namePlayer1))
-    println(
-      "Now please enter the name of the second player to play."
-    )
-    val namePlayer2 = readLine()
-    println(controller.addSecondPlayer(namePlayer2))
-    println("")
-    println(controller.field.toString)
-    controllMove()
-
   override def update = {
     println(controller.field.toString)
   }
 
-  def controllMove(): Unit =
+  def controllMove: Unit =
     println("To Play: Type in <W/B><x_value><y_value>!\nTo quit: Type q!\n")
     makeAMove(readLine()) match
       case None => return
       case Some(move) =>
         if (pState.strategy(pState.turn, move))
           controller.doAndNotify(controller.put, move)
-    controllMove()
+    controllMove
 
   def makeAMove(eingabe: String): Option[MoveCoordinates] =
     eingabe match {
