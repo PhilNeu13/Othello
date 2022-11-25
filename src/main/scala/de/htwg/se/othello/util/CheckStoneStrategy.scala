@@ -1,7 +1,7 @@
 package de.htwg.se.othello.util
 import de.htwg.se.othello.model.*
 import scala.collection.mutable.ListBuffer
-import scala.annotation.meta.field.apply
+//import scala.annotation.meta.field.apply
 
 object CheckStone {
 
