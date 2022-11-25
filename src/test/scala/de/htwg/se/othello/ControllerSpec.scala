@@ -22,6 +22,11 @@ class ControllerSpec extends AnyWordSpec {
       fieldWithMove.get(1, 2) should be(Stone.B)
       fieldWithMove.get(0, 0) should be(Stone.Empty)
     }
+    "not put a stone on the field if this move was already made" in {
+      var fieldWrongMove = controller.put(MoveCoordinates(Stone.B, 0, 0))
+      fieldWrongMove = controller.put(MoveCoordinates(Stone.W, 0, 0))
+      fieldWrongMove.get(0, 0) should be(Stone.W)
+    }
     "notify its observers on change" in {
       class TestObserver(controller: Controller) extends Observer:
         controller.add(this)

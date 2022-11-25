@@ -1,161 +1,190 @@
-package de.htwg.se.othello.util
-import de.htwg.se.othello.model.*
+package de.htwg.se.othello
+package util
+import de.htwg.se.othello.model.{Field, MoveCoordinates, Stone}
 import scala.collection.mutable.ListBuffer
-import scala.annotation.meta.field.apply
 
 object CheckStone {
 
+  def hasDifferentStone(x: Int, y: Int, stone: Stone, field: Field): Boolean = {
+    !field.get(x, y).equals(stone) && !field.get(x, y).equals(Stone.Empty)
+  }
+
   def strategy(
-      prevMove: MoveCoordinates,
-      presMove: MoveCoordinates,
+      move: MoveCoordinates,
       field: Field
-  ) =
+  ): ListBuffer[MoveCoordinates] =
     if (
-      prevMove.x > presMove.x && prevMove.y > presMove.y
+      hasDifferentStone(move.x + 1, move.y + 1, move.stone, field)
     ) // Second Stone top right
-      strategyTopRight(prevMove, field)
-    else if (
-      prevMove.x == presMove.x && prevMove.y < presMove.y
+      strategyTopRight(move, field)
+    if (
+      hasDifferentStone(move.x, move.y + 1, move.stone, field)
     ) // Second Stone top
-      strategyTop(prevMove, field)
-    else if (
-      prevMove.x > presMove.x && prevMove.y == presMove.y
+      strategyTop(move, field)
+    if (
+      hasDifferentStone(move.x + 1, move.y, move.stone, field)
     ) // Second Stone right
-      strategyRight(prevMove, field)
-    else if (
-      prevMove.x > presMove.x && prevMove.y < presMove.y
+      strategyRight(move, field)
+    if (
+      hasDifferentStone(move.x + 1, move.y - 1, move.stone, field)
     ) // Second Stone bottom right
-      strategyBottomRight(prevMove, field)
-    else if (
-      prevMove.x == presMove.x && prevMove.y > presMove.y
+      strategyBottomRight(move, field)
+    if (
+      hasDifferentStone(move.x, move.y - 1, move.stone, field)
     ) // Second Stone bottom
-      strategyBottom(prevMove, field)
-    else if (
-      prevMove.x < presMove.x && prevMove.y < presMove.y
+      strategyBottom(move, field)
+    if (
+      hasDifferentStone(move.x - 1, move.y - 1, move.stone, field)
     ) // Second Stone bottom left
-      strategyBottomLeft(prevMove, field)
-    else if (
-      prevMove.x < presMove.x && prevMove.y == presMove.y
-    ) // Second Stone right
-      strategyRight(prevMove, field)
-    else if (
-      prevMove.x < presMove.x && prevMove.y > presMove.y
-    ) // Second Stone top left
-      strategyTopLeft(prevMove, field)
+      strategyBottomLeft(move, field)
+    if (
+      hasDifferentStone(move.x - 1, move.y, move.stone, field)
+    ) // Second Stone left
+      strategyRight(move, field)
+    if (hasDifferentStone(move.x - 1, move.y + 1, move.stone, field)) // Second Stone top left
+      strategyTopLeft(move, field)
+    else
+      val list = new ListBuffer[MoveCoordinates]
+      list
   /*trait Strategy {
 		def execute(m: MoveCoordinates, f: Field): ListBuffer[MoveCoordinates]
 	}*/
 
   private def strategyTopRight(
-      firstMove: MoveCoordinates,
+      move: MoveCoordinates,
       field: Field
   ): ListBuffer[MoveCoordinates] = {
     var stonesInBetween = new ListBuffer[MoveCoordinates]
-    if (!field.get(firstMove.x + 1, firstMove.y + 1).equals(firstMove.stone)) {
-      stonesInBetween += firstMove
-      val nextStone =
-        new MoveCoordinates(firstMove.stone, firstMove.x + 1, firstMove.y + 1)
-      stonesInBetween.concat(strategyTopRight(nextStone, field))
+    if (!field.get(move.x, move.y).equals(Stone.Empty)) {
+      if (hasDifferentStone(move.x + 1, move.y + 1, move.stone, field)) {
+        stonesInBetween += move
+        val nextStone =
+          new MoveCoordinates(move.stone, move.x + 1, move.y + 1)
+        stonesInBetween.concat(strategyTopRight(nextStone, field))
+      }
     }
     stonesInBetween
   }
 
   private def strategyTop(
-      firstMove: MoveCoordinates,
+      move: MoveCoordinates,
       field: Field
   ): ListBuffer[MoveCoordinates] = {
     var stonesInBetween = new ListBuffer[MoveCoordinates]
-    if (!field.get(firstMove.x, firstMove.y + 1).equals(firstMove.stone)) {
-      stonesInBetween += firstMove
-      val nextStone =
-        new MoveCoordinates(firstMove.stone, firstMove.x, firstMove.y + 1)
-      stonesInBetween.concat(strategyRight(nextStone, field))
+    if (!field.get(move.x, move.y).equals(Stone.Empty)) {
+      if (hasDifferentStone(move.x, move.y + 1, move.stone, field)) {
+        stonesInBetween += move
+        val nextStone =
+          new MoveCoordinates(move.stone, move.x, move.y + 1)
+        stonesInBetween.concat(strategyRight(nextStone, field))
+      }
     }
     stonesInBetween
   }
 
   private def strategyRight(
-      firstMove: MoveCoordinates,
+      move: MoveCoordinates,
       field: Field
   ): ListBuffer[MoveCoordinates] = {
     var stonesInBetween = new ListBuffer[MoveCoordinates]
-    if (!field.get(firstMove.x + 1, firstMove.y).equals(firstMove.stone)) {
-      stonesInBetween += firstMove
-      val nextStone =
-        new MoveCoordinates(firstMove.stone, firstMove.x + 1, firstMove.y)
-      stonesInBetween.concat(strategyRight(nextStone, field))
+    if (!field.get(move.x, move.y).equals(Stone.Empty)) {
+      if (hasDifferentStone(move.x + 1, move.y, move.stone, field)) {
+        stonesInBetween += move
+        val nextStone =
+          new MoveCoordinates(move.stone, move.x + 1, move.y)
+        stonesInBetween.concat(strategyRight(nextStone, field))
+      }
     }
     stonesInBetween
   }
 
   private def strategyBottomRight(
-      firstMove: MoveCoordinates,
+      move: MoveCoordinates,
       field: Field
   ): ListBuffer[MoveCoordinates] = {
     var stonesInBetween = new ListBuffer[MoveCoordinates]
-    if (!field.get(firstMove.x + 1, firstMove.y - 1).equals(firstMove.stone)) {
-      stonesInBetween += firstMove
-      val nextStone =
-        new MoveCoordinates(firstMove.stone, firstMove.x + 1, firstMove.y - 1)
-      stonesInBetween.concat(strategyBottomRight(nextStone, field))
+    if (!field.get(move.x, move.y).equals(Stone.Empty)) {
+      if (hasDifferentStone(move.x + 1, move.y - 1, move.stone, field)) {
+        stonesInBetween += move
+        val nextStone =
+          new MoveCoordinates(move.stone, move.x + 1, move.y - 1)
+        stonesInBetween.concat(strategyBottomRight(nextStone, field))
+      }
     }
     stonesInBetween
 
   }
 
   private def strategyBottom(
-      firstMove: MoveCoordinates,
+      move: MoveCoordinates,
       field: Field
   ): ListBuffer[MoveCoordinates] = {
     var stonesInBetween = new ListBuffer[MoveCoordinates]
-    if (!field.get(firstMove.x, firstMove.y - 1).equals(firstMove.stone)) {
-      stonesInBetween += firstMove
-      val nextStone =
-        new MoveCoordinates(firstMove.stone, firstMove.x, firstMove.y - 1)
-      stonesInBetween.concat(strategyRight(nextStone, field))
+    if (!field.get(move.x, move.y).equals(Stone.Empty)) {
+      if (hasDifferentStone(move.x, move.y - 1, move.stone, field)) {
+        stonesInBetween += move
+        val nextStone =
+          new MoveCoordinates(move.stone, move.x, move.y - 1)
+        stonesInBetween.concat(strategyRight(nextStone, field))
+      }
     }
     stonesInBetween
   }
 
   private def strategyBottomLeft(
-      firstMove: MoveCoordinates,
+      move: MoveCoordinates,
       field: Field
   ): ListBuffer[MoveCoordinates] = {
     var stonesInBetween = new ListBuffer[MoveCoordinates]
-    if (!field.get(firstMove.x - 1, firstMove.y - 1).equals(firstMove.stone)) {
-      stonesInBetween += firstMove
-      val nextStone =
-        new MoveCoordinates(firstMove.stone, firstMove.x - 1, firstMove.y - 1)
-      stonesInBetween.concat(strategyBottomLeft(nextStone, field))
+    if (!field.get(move.x, move.y).equals(Stone.Empty)) {
+      if (hasDifferentStone(move.x - 1, move.y - 1, move.stone, field)) {
+        stonesInBetween += move
+        val nextStone =
+          new MoveCoordinates(move.stone, move.x - 1, move.y - 1)
+        stonesInBetween.concat(strategyBottomLeft(nextStone, field))
+      }
     }
     stonesInBetween
   }
 
   private def strategyLeft(
-      firstMove: MoveCoordinates,
+      move: MoveCoordinates,
       field: Field
   ): ListBuffer[MoveCoordinates] = {
     var stonesInBetween = new ListBuffer[MoveCoordinates]
-    if (!field.get(firstMove.x - 1, firstMove.y).equals(firstMove.stone)) {
-      stonesInBetween += firstMove
-      val nextStone =
-        new MoveCoordinates(firstMove.stone, firstMove.x - 1, firstMove.y)
-      stonesInBetween.concat(strategyLeft(nextStone, field))
+    if (!field.get(move.x, move.y).equals(Stone.Empty)) {
+      if (hasDifferentStone(move.x - 1, move.y, move.stone, field)) {
+        stonesInBetween += move
+        val nextStone =
+          new MoveCoordinates(move.stone, move.x - 1, move.y)
+        stonesInBetween.concat(strategyLeft(nextStone, field))
+      }
     }
     stonesInBetween
   }
 
   private def strategyTopLeft(
-      firstMove: MoveCoordinates,
+      move: MoveCoordinates,
       field: Field
   ): ListBuffer[MoveCoordinates] = {
     var stonesInBetween = new ListBuffer[MoveCoordinates]
-    if (!field.get(firstMove.x - 1, firstMove.y + 1).equals(firstMove.stone)) {
-      stonesInBetween += firstMove
-      val nextStone =
-        new MoveCoordinates(firstMove.stone, firstMove.x - 1, firstMove.y + 1)
-      stonesInBetween.concat(strategyTopLeft(nextStone, field))
+    if (!field.get(move.x, move.y).equals(Stone.Empty)) {
+      if (hasDifferentStone(move.x - 1, move.y + 1, move.stone, field)) {
+        stonesInBetween += move
+        val nextStone =
+          new MoveCoordinates(move.stone, move.x - 1, move.y + 1)
+        stonesInBetween.concat(strategyTopLeft(nextStone, field))
+      }
     }
     stonesInBetween
+  }
+
+  def flipStone(
+      list: ListBuffer[MoveCoordinates],
+      field: Field,
+      stone: Stone
+  ): Field = {
+    list.foreach(el => field.put(el.stone, el.x, el.y))
+    field
   }
 }

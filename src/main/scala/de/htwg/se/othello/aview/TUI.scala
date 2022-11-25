@@ -2,9 +2,9 @@ package de.htwg.se.othello
 package aview
 
 import controller.Controller
-import model.{Stone, MoveCoordinates, Player, Field, Game, PlayerState}
+import model.{Stone, MoveCoordinates, Player, Field}
 import scala.io.StdIn.readLine
-import util.Observer
+import util.{Observer, PlayerState}
 
 class TUI(controller: Controller) extends Observer:
   controller.add(this)
@@ -28,9 +28,12 @@ class TUI(controller: Controller) extends Observer:
   }
 
   def controllMove(): Unit =
-    makeAMove(pState.strategy(pState.turn)) match
-      case None       => return
-      case Some(move) => controller.doAndNotify(controller.put, move)
+    println("To Play: Type in <W/B><x_value><y_value>!\nTo quit: Type q!\n")
+    makeAMove(readLine()) match
+      case None => return
+      case Some(move) =>
+        if (pState.strategy(pState.turn, move))
+          controller.doAndNotify(controller.put, move)
     controllMove()
 
   def makeAMove(eingabe: String): Option[MoveCoordinates] =
