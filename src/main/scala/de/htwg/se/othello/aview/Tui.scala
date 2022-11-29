@@ -1,35 +1,41 @@
-package de.htwg.se.othello.aview
+package de.htwg.se.othello
+package aview
 
-import de.htwg.se.othello.model.{Field,Stone,Matrix}
-import scala.io.StdIn._
+import controller.Controller
+import model.{Stone, MoveCoordinates, Player, Field}
+import scala.io.StdIn.readLine
+import util.{Observer, PlayerState}
 
-class Tui {
-/*
-    def getInputAndPrintLoop(field: Field): Unit =
-    print("To Play: Type in <W/B><x_value><y_value>!\nTo quit: Type q!\n")
-    val input = readLine
-    parseInput(input) match {
-    case None => field
-    case Some(newfield) =>
-      println(newfield)
-      getInputAndPrintLoop(newfield)
+class TUI(controller: Controller) extends UI(controller):
+  controller.add(this)
+  val pState = PlayerState
+  override def update = {
+    println(controller.field.toString)
   }
 
-    def parseInput(input: String): Option[Field] =
-        input match
-        case "q" => None
-        case _ => {
-            val chars = input.toCharArray
-            val stone = chars(0) match {
-            case 'W' => Stone.W
-            case 'w' => Stone.W
-            case 'B' => Stone.B
-            case 'b' => Stone.B
-            case _   => Stone.Empty
-            }
-            val x = chars(1).toString.toInt
-            val y = chars(2).toString.toInt
-            Some(field.put(stone, y - 1, x - 1))
+  def controllMove: Unit =
+    println("To Play: Type in <W/B><x_value><y_value>!\nTo quit: Type q!\n")
+    makeAMove(readLine()) match
+      case None => return
+      case Some(move) =>
+        if (pState.strategy(pState.turn, move))
+          controller.doAndNotify(controller.put, move)
+    controllMove
+
+  def makeAMove(eingabe: String): Option[MoveCoordinates] =
+    eingabe match {
+      case "q" => None
+      case "u" => controller.doAndNotify(controller.undo); None
+      case "r" => controller.doAndNotify(controller.redo); None
+      case _ => {
+        val chars = eingabe.toCharArray
+        val stone = chars(0) match {
+          case 'B' => Stone.B
+          case 'W' => Stone.W
+          case _   => Stone.Empty
         }
-        */
-}
+        val x = chars(1).toString.toInt
+        val y = chars(2).toString.toInt
+        Some(MoveCoordinates(stone, x, y))
+      }
+    }
