@@ -1,7 +1,7 @@
-
 package de.htwg.se.othello.model
 
 class FieldBuilder(size: Int, filling: Stone) {
+  val maxRange = 8
 
   val middle = (size / 2) - 1
 
