@@ -1,40 +1,36 @@
 package de.htwg.se.othello.util
 
-trait Command[T]:
-  def noStep(t: T): T
-  def doStep(t: T): T
-  def undoStep(t: T): T
-  def redoStep(t: T): T
-  def doFlag(t: T): T
+import de.htwg.se.othello.model.Field
 
-class UndoManager[T]:
-  private var undoStack: List[Command[T]] = Nil
-  private var redoStack: List[Command[T]] = Nil
+trait Command[Field]:
+  def doStep(field: Field): Field
+  def undoStep(field: Field): Field
+  def redoStep(field: Field): Field
 
-  def noStep(t: T, command: Command[T]): T =
-    command.noStep(t)
-  def doStep(t: T, command: Command[T]): T =
+class UndoManager[Field]:
+  private var undoStack: List[Command[Field]] = Nil
+  private var redoStack: List[Command[Field]] = Nil
+
+  def doStep(field: Field, command: Command[Field]): Field =
     undoStack = command :: undoStack
     redoStack = redoStack.empty
-    command.doStep(t)
-  def doFlag(t: T, command: Command[T]): T =
-    undoStack = command :: undoStack
-    command.doFlag(t)
-  def undoStep(t: T): T =
+    command.doStep(field)
+
+  def undoStep(field: Field): Field =
     undoStack match {
-      case Nil => t
+      case Nil => field
       case head :: stack => {
-        val result = head.undoStep(t)
+        val result = head.undoStep(field)
         undoStack = stack
         redoStack = head :: redoStack
         result
       }
     }
-  def redoStep(t: T): T =
+  def redoStep(field: Field): Field =
     redoStack match {
-      case Nil => t
+      case Nil => field
       case head :: stack => {
-        val result = head.redoStep(t)
+        val result = head.redoStep(field)
         redoStack = stack
         undoStack = head :: undoStack
         result

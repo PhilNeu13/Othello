@@ -25,7 +25,7 @@ object PlayerState {
   def player1: Int = 1
   def player2: Int = 2
 
-  def strategy(turn: Int, move: MoveCoordinates) =
+  var strategy(move: MoveCoordinates => Boolean) =
     if (turn == 1)
       stratPlayer1(move)
     else

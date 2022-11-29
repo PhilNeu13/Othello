@@ -16,7 +16,7 @@ class TUI(controller: Controller) extends UI(controller):
   def controllMove: Unit =
     println("To Play: Type in <W/B><x_value><y_value>!\nTo quit: Type q!\n")
     makeAMove(readLine()) match
-      case None => return
+      case None =>
       case Some(move) =>
         if (pState.strategy(pState.turn, move))
           controller.doAndNotify(controller.put, move)
@@ -25,6 +25,8 @@ class TUI(controller: Controller) extends UI(controller):
   def makeAMove(eingabe: String): Option[MoveCoordinates] =
     eingabe match {
       case "q" => None
+      case "u" => controller.doAndNotify(controller.undo); None
+      case "r" => controller.doAndNotify(controller.redo); None
       case _ => {
         val chars = eingabe.toCharArray
         val stone = chars(0) match {
