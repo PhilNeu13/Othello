@@ -1,4 +1,5 @@
-package de.htwg.se.othello.observe
+package de.htwg.se.othello
+package util
 
 trait Observable {
   var viewer: Vector[Observer] = Vector()

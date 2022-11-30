@@ -4,39 +4,34 @@ package aview
 import controller.Controller
 import model.{Stone, MoveCoordinates, Player, Field}
 import scala.io.StdIn.readLine
-import observe.Observer
+import util.{Observer, PlayerQueue}
+import de.htwg.se.othello.util.PlayerState
 
-class TUI(controller: Controller) extends Observer:
+class TUI(controller: Controller, playerQ: PlayerQueue) extends UI(controller):
   controller.add(this)
 
-  def start =
-    println("Before starting please enter the name of the first player!")
-    val namePlayer1 = readLine()
-    // controller.addFirstPlayer(namePlayer1)
-    println(controller.addFirstPlayer(namePlayer1))
-    println(
-      "Now please enter the name of the second player to play."
-    )
-    val namePlayer2 = readLine()
-    println(controller.addSecondPlayer(namePlayer2))
-    println("")
-    println(controller.field.toString)
-    controllMove()
+  val playerState = PlayerState
 
   override def update = {
     println(controller.field.toString)
   }
 
-  def controllMove(): Unit =
+  def controllMove: Unit =
     println("To Play: Type in <W/B><x_value><y_value>!\nTo quit: Type q!\n")
-    makeAMove(readLine) match
-      case None       => return
-      case Some(move) => controller.doAndNotify(controller.put, move)
-    controllMove()
+
+    makeAMove(readLine()) match
+      case None =>
+      case Some(move) =>
+        if (playerState.strategy(playerQ.currentState, move, playerQ))
+          controller.doAndNotify(controller.put, move)
+    controllMove
+
 
   def makeAMove(eingabe: String): Option[MoveCoordinates] =
     eingabe match {
       case "q" => None
+      case "u" => controller.doAndNotify(controller.undo); None
+      case "r" => controller.doAndNotify(controller.redo); None
       case _ => {
         val chars = eingabe.toCharArray
         val stone = chars(0) match {
@@ -46,6 +41,6 @@ class TUI(controller: Controller) extends Observer:
         }
         val x = chars(1).toString.toInt
         val y = chars(2).toString.toInt
-        Some(MoveCoordinates(stone, x - 1, y - 1))
+        Some(MoveCoordinates(stone, x, y))
       }
     }

@@ -1,23 +1,38 @@
 package de.htwg.se.othello
 package controller
 
-import model.{Field, Stone, MoveCoordinates, Player}
-import observe.{Observable, Observer}
+import model._
+import util.{Observable, Observer, DoManager, PlayerQueue}
+import scala.collection.mutable.ListBuffer
 
-case class Controller(var field: Field) extends Observable:
+case class Controller(var field: Field, playerQ: PlayerQueue)
+    extends Observable:
+  val undoManager = new DoManager[Field]
 
-  def addFirstPlayer(playerName: String): String = {
-    val player1 = Player(playerName, Stone.B)
-    return player1.toString
-  }
-  def addSecondPlayer(playerName: String): String = {
-    val player2 = Player(playerName, Stone.W)
-    return player2.toString
-  }
+  def addFirstPlayer(playerName: String): String =
+    Player(playerName, Stone.B).toString
+
+  def addSecondPlayer(playerName: String): String =
+    Player(playerName, Stone.W).toString
+
 
   def doAndNotify(doThis: MoveCoordinates => Field, move: MoveCoordinates) =
     field = doThis(move)
     notifyObservers
+
   def put(move: MoveCoordinates): Field =
-    field.put(move.stone, move.x, move.y)
+    if (field.get(move.x, move.y) == Stone.Empty)
+      playerQ.currentState.changeState()
+      undoManager.doStep(field, CmdController(move))
+    else field
+
+  def doAndNotify(doThis: => Field) =
+    field = doThis
+    playerQ.currentState.changeState()
+    notifyObservers
+
+  def undo: Field = undoManager.undoStep(field)
+
+  def redo: Field = undoManager.redoStep(field)
+
   override def toString: String = field.toString
