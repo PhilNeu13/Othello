@@ -15,7 +15,7 @@ class TUISpec extends AnyWordSpec {
     val lukas = new Player("Lukas", Stone.W)
     val playerQ = new PlayerQueue
     val tui = TUI(Controller(new Field(6, Stone.Empty), playerQ), playerQ)
-=
+
     "recognize the input x12 as move of stone x to field (1,2)" in {
       tui.makeAMove("B12") should be(Some(MoveCoordinates(Stone.B, 1, 2)))
     }
