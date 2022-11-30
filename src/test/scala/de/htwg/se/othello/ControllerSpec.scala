@@ -11,13 +11,16 @@ import de.htwg.se.othello.util.PlayerQueue
 
 class ControllerSpec extends AnyWordSpec {
   "The Controller" should {
+
     val controller = Controller(new Field(3, Stone.Empty), new PlayerQueue())
+
 
     val player1 = controller.addFirstPlayer("Phil")
     player1.toString() should be("Phil has Stone B")
 
     val player2 = controller.addSecondPlayer("Lukas")
     player2.toString() should be("Lukas has Stone W")
+
     "put a stone on the field when a move is made" in {
       val fieldWithMove = controller.put(MoveCoordinates(Stone.B, 1, 2))
       fieldWithMove.get(1, 2) should be(Stone.B)

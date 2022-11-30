@@ -9,19 +9,23 @@ import de.htwg.se.othello.util.PlayerState
 
 class TUI(controller: Controller, playerQ: PlayerQueue) extends UI(controller):
   controller.add(this)
+
   val playerState = PlayerState
+
   override def update = {
     println(controller.field.toString)
   }
 
   def controllMove: Unit =
     println("To Play: Type in <W/B><x_value><y_value>!\nTo quit: Type q!\n")
+
     makeAMove(readLine()) match
       case None =>
       case Some(move) =>
         if (playerState.strategy(playerQ.currentState, move, playerQ))
           controller.doAndNotify(controller.put, move)
     controllMove
+
 
   def makeAMove(eingabe: String): Option[MoveCoordinates] =
     eingabe match {
