@@ -24,6 +24,3 @@ case class Field(matrix: Matrix[Stone]):
   def put(stone: Stone, x: Int, y: Int) = copy(matrix.replaceCell(x, y, stone))
 
   def get(x: Int, y: Int): Stone = matrix.cell(x, y) // Test purposes+
-
-  def get(x: Int, y: Int): Stone = matrix.cell(x, y) // Test purposes
-
