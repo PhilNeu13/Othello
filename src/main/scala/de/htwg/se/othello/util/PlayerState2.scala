@@ -4,7 +4,7 @@ import de.htwg.se.othello.model.Stone
 import scala.io.StdIn.readLine
 import de.htwg.se.othello.model.MoveCoordinates
 
-object PlayerState {
+object PlayerState2 {
   var turn: Int = player1
 
   def getStone: Stone = {

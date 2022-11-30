@@ -7,7 +7,7 @@ trait Command[Field]:
   def undoStep(field: Field): Field
   def redoStep(field: Field): Field
 
-class UndoManager[Field]:
+class DoManager[Field]:
   private var undoStack: List[Command[Field]] = Nil
   private var redoStack: List[Command[Field]] = Nil
 

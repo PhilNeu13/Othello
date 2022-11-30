@@ -1,4 +1,7 @@
-package de.htwg.se.othello.model
+package de.htwg.se.othello.util
+
+import de.htwg.se.othello.model.MoveCoordinates
+import de.htwg.se.othello.model.Stone
 
 class PlayerQueue {
   var black: State = new TurnBlack(this)

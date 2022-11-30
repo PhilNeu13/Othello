@@ -1,15 +1,13 @@
 package de.htwg.se.othello
 package controller
 
-
 import model._
-import util.{Observable, Observer, UndoManager}
+import util.{Observable, Observer, DoManager, PlayerQueue}
 import scala.collection.mutable.ListBuffer
 
-case class Controller(var field: Field) extends Observable:
-  val undoManager = new UndoManager[Field]
-
-  val playerQueue = new PlayerQueue()
+case class Controller(var field: Field, playerQ: PlayerQueue)
+    extends Observable:
+  val undoManager = new DoManager[Field]
 
   def addFirstPlayer(playerName: String): String =
     Player(playerName, Stone.B).toString
@@ -23,13 +21,13 @@ case class Controller(var field: Field) extends Observable:
 
   def put(move: MoveCoordinates): Field =
     if (field.get(move.x, move.y) == Stone.Empty)
-      playerQueue.currentState.changeState()
+      playerQ.currentState.changeState()
       undoManager.doStep(field, CmdController(move))
     else field
 
   def doAndNotify(doThis: => Field) =
     field = doThis
-    playerQueue.currentState.changeState()
+    playerQ.currentState.changeState()
     notifyObservers
 
   def undo: Field = undoManager.undoStep(field)
