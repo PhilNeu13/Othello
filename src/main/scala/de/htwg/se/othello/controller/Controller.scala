@@ -7,12 +7,9 @@ import scala.collection.mutable.ListBuffer
 
 case class Controller(var field: Field) extends Observable:
   val undoManager = new UndoManager[Field]
-  
+
   val playerQueue = new PlayerQueue()
 
-  def change_Player(): Unit = 
-    playerQueue.changeState()
-  
   def addFirstPlayer(playerName: String): String =
     Player(playerName, Stone.B).toString
 
@@ -25,12 +22,13 @@ case class Controller(var field: Field) extends Observable:
 
   def put(move: MoveCoordinates): Field =
     if (field.get(move.x, move.y) == Stone.Empty)
-      change_Player()
+      playerQueue.currentState.changeState()
       undoManager.doStep(field, CmdController(move))
     else field
 
   def doAndNotify(doThis: => Field) =
     field = doThis
+    playerQueue.currentState.changeState()
     notifyObservers
 
   def undo: Field = undoManager.undoStep(field)
