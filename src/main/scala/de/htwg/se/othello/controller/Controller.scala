@@ -1,6 +1,7 @@
 package de.htwg.se.othello
 package controller
 
+
 import model._
 import util.{Observable, Observer, UndoManager}
 import scala.collection.mutable.ListBuffer
