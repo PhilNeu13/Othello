@@ -15,6 +15,7 @@ case class Controller(var field: Field, playerQ: PlayerQueue)
   def addSecondPlayer(playerName: String): String =
     Player(playerName, Stone.W).toString
 
+
   def doAndNotify(doThis: MoveCoordinates => Field, move: MoveCoordinates) =
     field = doThis(move)
     notifyObservers
