@@ -26,11 +26,12 @@ class TUI(controller: Controller, playerQ: PlayerQueue) extends UI(controller):
         playerState.strategy(move) match {
           case Success(tru: Boolean) =>
             controller.doAndNotify(controller.put, move)
-            controllMove
+
           case Failure(excep: Throwable) =>
             println(excep)
-            controllMove
         }
+        controllMove
+
     }
 
   def makeAMove(eingabe: String): Option[MoveCoordinates] =
