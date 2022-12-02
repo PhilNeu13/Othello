@@ -6,7 +6,7 @@ import org.scalatest.wordspec.AnyWordSpec
 
 import de.htwg.se.othello.model.{Field, Stone, MoveCoordinates, Player}
 import de.htwg.se.othello.controller.Controller
-import de.htwg.se.othello.util.PlayerQueue
+import de.htwg.se.othello.model.PlayerQueue
 
 class TUISpec extends AnyWordSpec {
   "The TUI" should {

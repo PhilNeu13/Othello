@@ -8,7 +8,7 @@ import de.htwg.se.othello.model.{FieldBuilder, Field}
 import scala.io.StdIn._
 import controller.Controller
 import aview.TUI
-import de.htwg.se.othello.util.PlayerQueue
+import de.htwg.se.othello.model.PlayerQueue
 
 @main def Othello: Unit =
   println("\nWelcome to Othello!")

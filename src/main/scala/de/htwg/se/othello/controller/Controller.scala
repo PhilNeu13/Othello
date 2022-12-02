@@ -2,7 +2,7 @@ package de.htwg.se.othello
 package controller
 
 import model._
-import util.{Observable, Observer, DoManager, PlayerQueue}
+import util.{Observable, Observer, DoManager}
 import scala.collection.mutable.ListBuffer
 
 case class Controller(var field: Field, playerQ: PlayerQueue)
@@ -14,7 +14,6 @@ case class Controller(var field: Field, playerQ: PlayerQueue)
 
   def addSecondPlayer(playerName: String): String =
     Player(playerName, Stone.W).toString
-
 
   def doAndNotify(doThis: MoveCoordinates => Field, move: MoveCoordinates) =
     field = doThis(move)

@@ -1,4 +1,4 @@
-package de.htwg.se.othello.util
+package de.htwg.se.othello.model
 
 import de.htwg.se.othello.model.MoveCoordinates
 import de.htwg.se.othello.model.Stone
@@ -30,13 +30,11 @@ class TurnWhite(playerQueue: PlayerQueue) extends State {
     playerQueue.currentState = playerQueue.black
 
 }
-object PlayerState {
+class PlayerState(playerQ: PlayerQueue) {
   def strategy(
-      currentState: State,
-      move: MoveCoordinates,
-      playerQ: PlayerQueue
+      move: MoveCoordinates
   ) =
-    if (currentState == playerQ.currentState)
+    if (playerQ.currentState.isInstanceOf[TurnBlack])
       stratPlayer1(move)
     else stratPlayer2(move)
 

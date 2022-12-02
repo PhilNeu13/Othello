@@ -7,13 +7,12 @@ import org.scalatest.matchers.should.Matchers._
 import org.scalatest.wordspec.AnyWordSpec
 
 import util.Observer
-import de.htwg.se.othello.util.PlayerQueue
+import de.htwg.se.othello.model.PlayerQueue
 
 class ControllerSpec extends AnyWordSpec {
   "The Controller" should {
 
     val controller = Controller(new Field(3, Stone.Empty), new PlayerQueue())
-
 
     val player1 = controller.addFirstPlayer("Phil")
     player1.toString() should be("Phil has Stone B")

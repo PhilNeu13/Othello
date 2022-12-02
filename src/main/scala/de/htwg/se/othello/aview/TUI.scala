@@ -2,15 +2,15 @@ package de.htwg.se.othello
 package aview
 
 import controller.Controller
-import model.{Stone, MoveCoordinates, Player, Field}
+import model.{Stone, MoveCoordinates, Player, Field, PlayerQueue}
 import scala.io.StdIn.readLine
-import util.{Observer, PlayerQueue}
-import de.htwg.se.othello.util.PlayerState
+import util.{Observer}
+import de.htwg.se.othello.model.PlayerState
 
 class TUI(controller: Controller, playerQ: PlayerQueue) extends UI(controller):
   controller.add(this)
 
-  val playerState = PlayerState
+  val playerState = PlayerState(playerQ)
 
   override def update = {
     println(controller.field.toString)
@@ -22,10 +22,9 @@ class TUI(controller: Controller, playerQ: PlayerQueue) extends UI(controller):
     makeAMove(readLine()) match
       case None =>
       case Some(move) =>
-        if (playerState.strategy(playerQ.currentState, move, playerQ))
+        if (playerState.strategy(move))
           controller.doAndNotify(controller.put, move)
     controllMove
-
 
   def makeAMove(eingabe: String): Option[MoveCoordinates] =
     eingabe match {
