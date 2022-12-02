@@ -2,6 +2,9 @@ package de.htwg.se.othello.model
 
 import de.htwg.se.othello.model.MoveCoordinates
 import de.htwg.se.othello.model.Stone
+import scala.util.{Success, Failure, Try}
+import org.scalactic.Bool
+import java.lang.invoke.WrongMethodTypeException
 
 class PlayerQueue {
   var black: State = new TurnBlack(this)
@@ -38,17 +41,17 @@ class PlayerStrat(playerQ: PlayerQueue) {
       stratPlayer1(move)
     else stratPlayer2(move)
 
-  def stratPlayer1(move: MoveCoordinates): Boolean = {
+  def stratPlayer1(move: MoveCoordinates): Try[Boolean] = {
     move.stone match {
-      case Stone.B => true
-      case _       => false
+      case Stone.B => Success(true)
+      case _       => Failure(new Exception("Wrong Player/Stone"))
     }
   }
 
-  def stratPlayer2(move: MoveCoordinates): Boolean = {
+  def stratPlayer2(move: MoveCoordinates): Try[Boolean] = {
     move.stone match {
-      case Stone.W => true
-      case _       => false
+      case Stone.W => Success(true)
+      case _       => Failure(new Exception("Wrong Player/Stone"))
     }
   }
 }

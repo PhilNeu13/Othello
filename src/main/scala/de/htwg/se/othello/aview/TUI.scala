@@ -6,6 +6,7 @@ import model.{Stone, MoveCoordinates, Player, Field, PlayerQueue}
 import scala.io.StdIn.readLine
 import util.{Observer}
 import de.htwg.se.othello.model.PlayerStrat
+import scala.util.{Try, Success, Failure}
 
 class TUI(controller: Controller, playerQ: PlayerQueue) extends UI(controller):
   controller.add(this)
@@ -19,12 +20,18 @@ class TUI(controller: Controller, playerQ: PlayerQueue) extends UI(controller):
   def controllMove: Unit =
     println("To Play: Type in <W/B><x_value><y_value>!\nTo quit: Type q!\n")
 
-    makeAMove(readLine()) match
+    makeAMove(readLine()) match {
       case None =>
       case Some(move) =>
-        if (playerState.strategy(move))
-          controller.doAndNotify(controller.put, move)
-    controllMove
+        playerState.strategy(move) match {
+          case Success(tru: Boolean) =>
+            controller.doAndNotify(controller.put, move)
+            controllMove
+          case Failure(excep: Throwable) =>
+            println(excep)
+            controllMove
+        }
+    }
 
   def makeAMove(eingabe: String): Option[MoveCoordinates] =
     eingabe match {
