@@ -5,12 +5,12 @@ import controller.Controller
 import model.{Stone, MoveCoordinates, Player, Field, PlayerQueue}
 import scala.io.StdIn.readLine
 import util.{Observer}
-import de.htwg.se.othello.model.PlayerState
+import de.htwg.se.othello.model.PlayerStrat
 
 class TUI(controller: Controller, playerQ: PlayerQueue) extends UI(controller):
   controller.add(this)
 
-  val playerState = PlayerState(playerQ)
+  val playerState = PlayerStrat(playerQ)
 
   override def update = {
     println(controller.field.toString)

@@ -30,7 +30,7 @@ class TurnWhite(playerQueue: PlayerQueue) extends State {
     playerQueue.currentState = playerQueue.black
 
 }
-class PlayerState(playerQ: PlayerQueue) {
+class PlayerStrat(playerQ: PlayerQueue) {
   def strategy(
       move: MoveCoordinates
   ) =
