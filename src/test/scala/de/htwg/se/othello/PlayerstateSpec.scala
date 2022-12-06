@@ -28,8 +28,10 @@ class PlayerstateSpec extends AnyWordSpec with Matchers {
   pState.strategy(MoveCoordinates(Stone.B, 1, 1)).success.value should be(
     true
   )
+  playerQ.currentState.getStone() should be(Stone.B)
   playerQ.changeState();
   pState.strategy(MoveCoordinates(Stone.W, 1, 1)).success.value should be(
     true
   )
+  playerQ.currentState.getStone() should be(Stone.W)
 }
