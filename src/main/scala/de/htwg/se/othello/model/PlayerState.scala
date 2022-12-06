@@ -17,6 +17,7 @@ class PlayerQueue {
 
 trait State {
   def changeState(): Unit
+  def getStone(): Stone
 }
 
 class TurnBlack(playerQueue: PlayerQueue) extends State {
@@ -25,12 +26,17 @@ class TurnBlack(playerQueue: PlayerQueue) extends State {
     playerQueue.prevState = this
     playerQueue.currentState = playerQueue.white
 
+  def getStone(): Stone =
+    Stone.B
 }
 
 class TurnWhite(playerQueue: PlayerQueue) extends State {
   def changeState(): Unit =
     playerQueue.prevState = this
     playerQueue.currentState = playerQueue.black
+
+  def getStone(): Stone =
+    Stone.W
 
 }
 class PlayerStrat(playerQ: PlayerQueue) {

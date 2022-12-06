@@ -12,9 +12,10 @@ import model.{
   TurnWhite
 }
 import scala.io.StdIn.readLine
-import de.htwg.se.othello.util.{Observer}
+import util.Observer
 
-abstract class UI(controller: Controller) extends Observer {
+trait UI(controller: Controller) extends Observer {
+  controller.add(this)
   def start: Unit =
     update
     controllMove
