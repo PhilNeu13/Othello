@@ -36,6 +36,12 @@ class GUI(controller: Controller, playerQ: PlayerQueue)
       new CellPanel(controller.field.size, controller.field.size),
       BorderPanel.Position.Center
     )
+    add(
+      new Label(
+        "It's Player " + playerQ.currentState.getStone().toString + "'s turn!"
+      ),
+      BorderPanel.Position.North
+    )
   }
   pack()
   centerOnScreen()
@@ -45,6 +51,14 @@ class GUI(controller: Controller, playerQ: PlayerQueue)
     case Event.Quit => this.dispose
     case Event.Move =>
       contents = new BorderPanel {
+        add(
+          new Label(
+            "It's Player " + playerQ.currentState
+              .getStone()
+              .toString + "'s turn!"
+          ),
+          BorderPanel.Position.North
+        )
         add(
           new CellPanel(controller.field.size, controller.field.size),
           BorderPanel.Position.Center
