@@ -19,11 +19,9 @@ class GUI(controller: Controller, playerQ: PlayerQueue)
 
   title = "Othello"
   menuBar = new MenuBar {
-    contents += new Menu("File") {
-      contents += new MenuItem(Action("Exit") {
-        sys.exit(0)
-      })
-    }
+    contents += new MenuItem(Action("Exit") {
+      controller.quit
+    })
     contents += new MenuItem(Action("Undo") {
       controller.doAndNotify(controller.undo)
     })
@@ -64,7 +62,7 @@ class GUI(controller: Controller, playerQ: PlayerQueue)
           BorderPanel.Position.Center
         )
       }
-  repaint
+      repaint
 
   class CellPanel(r: Int, c: Int) extends GridPanel(r, c):
     var list: List[CellButton] = List()

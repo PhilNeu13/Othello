@@ -6,7 +6,7 @@ import model.{Field, MoveCoordinates, Stone}
 import org.scalatest.matchers.should.Matchers._
 import org.scalatest.wordspec.AnyWordSpec
 
-import util.Observer
+import util.{Observer, Event}
 import de.htwg.se.othello.model.PlayerQueue
 
 class ControllerSpec extends AnyWordSpec {
@@ -36,7 +36,7 @@ class ControllerSpec extends AnyWordSpec {
       class TestObserver(controller: Controller) extends Observer:
         controller.add(this)
         var test = false
-        def update = test = true
+        def update(e: Event) = test = true
       val testObserver = TestObserver(controller)
       testObserver.test should be(false)
       controller.doAndNotify(controller.put, MoveCoordinates(Stone.B, 1, 2))
@@ -55,5 +55,6 @@ class ControllerSpec extends AnyWordSpec {
 
     controller.doAndNotify(controller.undo)
     controller.doAndNotify(controller.redo)
+    controller.quit
   }
 }
