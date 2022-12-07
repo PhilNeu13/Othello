@@ -12,12 +12,12 @@ import model.{
   TurnWhite
 }
 import scala.io.StdIn.readLine
-import util.Observer
+import util.{Observer, Event}
 
 trait UI(controller: Controller) extends Observer {
   controller.add(this)
   def start: Unit =
-    update
+    update(Event.Move)
     controllMove
   def controllMove: Unit
   def makeAMove(eingabe: String): Option[MoveCoordinates]

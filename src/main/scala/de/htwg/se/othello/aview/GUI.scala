@@ -24,6 +24,12 @@ class GUI(controller: Controller, playerQ: PlayerQueue)
         sys.exit(0)
       })
     }
+    contents += new MenuItem(Action("Undo") {
+      controller.doAndNotify(controller.undo)
+    })
+    contents += new MenuItem(Action("Redo") {
+      controller.doAndNotify(controller.redo)
+    })
   }
   contents = new BorderPanel {
     add(
@@ -35,18 +41,20 @@ class GUI(controller: Controller, playerQ: PlayerQueue)
   centerOnScreen()
   open()
 
-  override def update =
-    contents = new BorderPanel {
-      add(
-        new CellPanel(controller.field.size, controller.field.size),
-        BorderPanel.Position.Center
-      )
-    }
-    repaint
+  def update(e: Event): Unit = e match
+    case Event.Quit => this.dispose
+    case Event.Move =>
+      contents = new BorderPanel {
+        add(
+          new CellPanel(controller.field.size, controller.field.size),
+          BorderPanel.Position.Center
+        )
+      }
+  repaint
 
   class CellPanel(r: Int, c: Int) extends GridPanel(r, c):
     var list: List[CellButton] = List()
-    for (i <- 1 to r; j <- 1 to c) {
+    for (i <- 0 to r - 1; j <- 0 to c - 1) {
       list = list :+ CellButton(i, j, controller.field.get(i, j).toString)
     }
     list.foreach(t => contents += t)
