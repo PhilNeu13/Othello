@@ -29,6 +29,7 @@ case class Field(matrix: Matrix[Stone]) extends FieldInterface:
       )
   override def toString = mesh()
   def put(stone: Stone, x: Int, y: Int) = copy(matrix.replaceCell(x, y, stone))
+<<<<<<< HEAD
 <<<<<<< Updated upstream:src/main/scala/de/htwg/se/othello/model/Field.scala
   def get(x: Int, y: Int): Stone = matrix.cell(x, y) // Test purposes+
 
@@ -38,3 +39,10 @@ case class Field(matrix: Matrix[Stone]) extends FieldInterface:
   def get(x: Int, y: Int): Stone = matrix.cell(x, y)
   def getSize(): Int = size
 >>>>>>> Stashed changes:src/main/scala/de/htwg/se/othello/model/fieldComponent/Field.scala
+=======
+
+  def get(x: Int, y: Int): Stone = matrix.cell(x, y) // Test purposes+
+
+  def get(x: Int, y: Int): Stone = matrix.cell(x, y) // Test purposes
+
+>>>>>>> 55aa3ddd1ea5ab83f7a01804ae80553dbdc021d2

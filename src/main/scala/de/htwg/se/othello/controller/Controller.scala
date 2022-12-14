@@ -1,14 +1,18 @@
 package de.htwg.se.othello
 package controller
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+
+>>>>>>> 55aa3ddd1ea5ab83f7a01804ae80553dbdc021d2
 import model._
 import util.{Observable, Observer, UndoManager}
 import scala.collection.mutable.ListBuffer
 
 case class Controller(var field: Field) extends Observable:
   val undoManager = new UndoManager[Field]
-  
+
   val playerQueue = new PlayerQueue()
 =======
 import model.playerComponent._
@@ -23,9 +27,6 @@ case class Controller(var field: FieldInterface, playerQ: PlayerQueue)
   val undoManager = new DoManager[FieldInterface]
 >>>>>>> Stashed changes
 
-  def change_Player(): Unit = 
-    playerQueue.changeState()
-  
   def addFirstPlayer(playerName: String): String =
     Player(playerName, Stone.B).toString
 
@@ -38,7 +39,7 @@ case class Controller(var field: FieldInterface, playerQ: PlayerQueue)
 
   def put(move: MoveCoordinates): FieldInterface =
     if (field.get(move.x, move.y) == Stone.Empty)
-      change_Player()
+      playerQueue.currentState.changeState()
       undoManager.doStep(field, CmdController(move))
     else field
 
@@ -50,6 +51,7 @@ case class Controller(var field: FieldInterface, playerQ: PlayerQueue)
   def doAndNotify(doThis: => FieldInterface) =
 >>>>>>> Stashed changes
     field = doThis
+    playerQueue.currentState.changeState()
     notifyObservers
 
   def undo: FieldInterface = undoManager.undoStep(field)
