@@ -1,4 +1,6 @@
-package de.htwg.se.othello.model
+package de.htwg.se.othello.model.fieldComponent
+
+//import de.htwg.se.othello.model.FieldInterface
 
 case class Field(matrix: Matrix[Stone]):
   def this(size: Int, filling: Stone) = this(new Matrix(size, filling))

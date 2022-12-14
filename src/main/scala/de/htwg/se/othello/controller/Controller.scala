@@ -1,7 +1,10 @@
 package de.htwg.se.othello
 package controller
 
-import model._
+import model.fieldComponent._
+import model.playerComponent._
+//import model.FieldInterface
+import model.MoveCoordinates
 import util.{Observable, Observer, DoManager, Event}
 import scala.collection.mutable.ListBuffer
 

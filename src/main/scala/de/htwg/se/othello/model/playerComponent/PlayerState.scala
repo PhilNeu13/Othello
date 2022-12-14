@@ -1,7 +1,9 @@
-package de.htwg.se.othello.model
+package de.htwg.se.othello.model.playerComponent
 
+//import de.htwg.se.othello.model.PlayerInterface
 import de.htwg.se.othello.model.MoveCoordinates
-import de.htwg.se.othello.model.Stone
+import de.htwg.se.othello.model.fieldComponent
+import de.htwg.se.othello.model.fieldComponent.Stone
 import scala.util.{Success, Failure, Try}
 import org.scalactic.Bool
 import java.lang.invoke.WrongMethodTypeException

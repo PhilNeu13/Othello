@@ -2,12 +2,12 @@ package de.htwg.se.othello
 package aview
 
 import controller.Controller
-import model.{Stone, MoveCoordinates, Player, Field, PlayerQueue}
+import model.fieldComponent.{Stone, Field}
 import scala.io.StdIn.readLine
 import util.{Observer, Event}
-import model.PlayerStrat
+import model.playerComponent.{PlayerStrat,PlayerQueue}
 import scala.util.{Try, Success, Failure}
-
+import model.MoveCoordinates
 class TUI(controller: Controller, playerQ: PlayerQueue) extends UI(controller):
 
   val playerState = PlayerStrat(playerQ)

@@ -1,5 +1,6 @@
 package de.htwg.se.othello.controller
-import de.htwg.se.othello.model.{MoveCoordinates, Field}
+import de.htwg.se.othello.model.MoveCoordinates
+import de.htwg.se.othello.model.fieldComponent.Field
 import de.htwg.se.othello.util.Command
 
 class CmdController(move: MoveCoordinates) extends Command[Field] {

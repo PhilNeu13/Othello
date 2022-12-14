@@ -1,6 +1,6 @@
 package de.htwg.se.othello.util
 
-import de.htwg.se.othello.model.Field
+import de.htwg.se.othello.model.fieldComponent.Field
 
 trait Command[Field]:
   def doStep(field: Field): Field

@@ -2,15 +2,9 @@ package de.htwg.se.othello
 package aview
 
 import controller.Controller
-import model.{
-  Stone,
-  MoveCoordinates,
-  Player,
-  Field,
-  PlayerQueue,
-  TurnBlack,
-  TurnWhite
-}
+import model.MoveCoordinates
+import model.playerComponent.{PlayerQueue, TurnBlack, TurnWhite, Player}
+import model.fieldComponent.{Stone, Field}
 import scala.io.StdIn.readLine
 import util.{Observer, Event}
 

@@ -1,4 +1,6 @@
-package de.htwg.se.othello.model
+package de.htwg.se.othello.model.fieldComponent
+
+//import de.htwg.se.othello.model.FieldInterface
 
 enum Stone(stringRep: String) {
   override def toString = stringRep

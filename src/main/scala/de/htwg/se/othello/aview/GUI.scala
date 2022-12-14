@@ -5,6 +5,7 @@ import controller._
 import model._
 import util._
 import util.Event
+import model.playerComponent.PlayerQueue
 
 import scala.language.postfixOps
 import scala.swing._

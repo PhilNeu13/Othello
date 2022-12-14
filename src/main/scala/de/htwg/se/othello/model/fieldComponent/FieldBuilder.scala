@@ -1,4 +1,6 @@
-package de.htwg.se.othello.model
+package de.htwg.se.othello.model.fieldComponent
+
+//import de.htwg.se.othello.model.FieldInterface
 
 class FieldBuilder(size: Int, filling: Stone) {
   val maxRange = 8
