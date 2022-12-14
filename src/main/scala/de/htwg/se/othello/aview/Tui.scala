@@ -2,7 +2,12 @@ package de.htwg.se.othello
 package aview
 
 import controller.Controller
+<<<<<<< Updated upstream:src/main/scala/de/htwg/se/othello/aview/Tui.scala
 import model.{Stone, MoveCoordinates, Player, Field, PlayerQueue, TurnBlack, TurnWhite}
+=======
+import model.fieldComponent.{FieldInterface}
+import de.htwg.se.othello.model.stoneComponent.Stone
+>>>>>>> Stashed changes:src/main/scala/de/htwg/se/othello/aview/TUI.scala
 import scala.io.StdIn.readLine
 import util.{Observer}
 

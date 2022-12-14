@@ -1,4 +1,10 @@
+<<<<<<< Updated upstream:src/main/scala/de/htwg/se/othello/model/Matrix.scala
 package de.htwg.se.othello.model
+=======
+package de.htwg.se.othello.model.fieldComponent
+
+import de.htwg.se.othello.model.fieldComponent.FieldInterface
+>>>>>>> Stashed changes:src/main/scala/de/htwg/se/othello/model/fieldComponent/Matrix.scala
 
 case class Matrix[T](rows: Vector[Vector[T]]) {
   def this(size: Int, filling: T) = this(Vector.tabulate(size, size) {
