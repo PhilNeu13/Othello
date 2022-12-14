@@ -1,8 +1,9 @@
 package de.htwg.se.othello.model.fieldComponent
 
-//import de.htwg.se.othello.model.FieldInterface
+import de.htwg.se.othello.model.fieldComponent.FieldInterface
+import de.htwg.se.othello.model.stoneComponent.Stone
 
-case class Field(matrix: Matrix[Stone])/*extends FieldInterface*/:
+case class Field(matrix: Matrix[Stone]) extends FieldInterface:
   def this(size: Int, filling: Stone) = this(new Matrix(size, filling))
   val size = matrix.size
   val eol = sys.props("line.separator")
@@ -25,4 +26,5 @@ case class Field(matrix: Matrix[Stone])/*extends FieldInterface*/:
   override def toString = mesh()
   def put(stone: Stone, x: Int, y: Int) = copy(matrix.replaceCell(x, y, stone))
 
-  def get(x: Int, y: Int): Stone = matrix.cell(x, y) // Test purposes+
+  def get(x: Int, y: Int): Stone = matrix.cell(x, y)
+  def getSize(): Int = size

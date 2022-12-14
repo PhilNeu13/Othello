@@ -1,9 +1,9 @@
 package de.htwg.se.othello.model.playerComponent
 
-//import de.htwg.se.othello.model.PlayerInterface
+//import de.htwg.se.othello.model.playerComponent.PlayerInterface
 import de.htwg.se.othello.model.MoveCoordinates
 import de.htwg.se.othello.model.fieldComponent
-import de.htwg.se.othello.model.fieldComponent.Stone
+import de.htwg.se.othello.model.stoneComponent.Stone
 import scala.util.{Success, Failure, Try}
 import org.scalactic.Bool
 import java.lang.invoke.WrongMethodTypeException
@@ -41,7 +41,7 @@ class TurnWhite(playerQueue: PlayerQueue) extends State {
     Stone.W
 
 }
-class PlayerStrat(playerQ: PlayerQueue) {
+class PlayerStrat(playerQ: PlayerQueue) /*extends PlayerInterface */{
   def strategy(
       move: MoveCoordinates
   ) =

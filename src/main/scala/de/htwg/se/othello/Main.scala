@@ -1,6 +1,7 @@
 package de.htwg.se.othello
 
-import model.fieldComponent.{FieldBuilder, Stone}
+import model.fieldComponent.{FieldBuilder}
+import de.htwg.se.othello.model.stoneComponent.Stone
 import model.playerComponent.PlayerQueue
 import aview.GUI
 import scala.io.StdIn._

@@ -1,16 +1,16 @@
 package de.htwg.se.othello
 package controller
 
-import model.fieldComponent._
 import model.playerComponent._
-//import model.FieldInterface
+import de.htwg.se.othello.model.stoneComponent.Stone
+import model.fieldComponent.FieldInterface
 import model.MoveCoordinates
 import util.{Observable, Observer, DoManager, Event}
 import scala.collection.mutable.ListBuffer
 
-case class Controller(var field: Field, playerQ: PlayerQueue)
+case class Controller(var field: FieldInterface, playerQ: PlayerQueue)
     extends Observable:
-  val undoManager = new DoManager[Field]
+  val undoManager = new DoManager[FieldInterface]
 
   def addFirstPlayer(playerName: String): String =
     Player(playerName, Stone.B).toString
@@ -18,11 +18,11 @@ case class Controller(var field: Field, playerQ: PlayerQueue)
   def addSecondPlayer(playerName: String): String =
     Player(playerName, Stone.W).toString
 
-  def doAndNotify(doThis: MoveCoordinates => Field, move: MoveCoordinates) =
+  def doAndNotify(doThis: MoveCoordinates => FieldInterface, move: MoveCoordinates) =
     field = doThis(move)
     notifyObservers(Event.Move)
 
-  def put(move: MoveCoordinates): Field =
+  def put(move: MoveCoordinates): FieldInterface =
     if (field.get(move.x, move.y) == Stone.Empty)
       playerQ.currentState.changeState()
       undoManager.doStep(field, CmdController(move))
@@ -30,13 +30,13 @@ case class Controller(var field: Field, playerQ: PlayerQueue)
 
   def quit: Unit = notifyObservers(Event.Quit)
 
-  def doAndNotify(doThis: => Field) =
+  def doAndNotify(doThis: => FieldInterface) =
     field = doThis
     playerQ.currentState.changeState()
     notifyObservers(Event.Move)
 
-  def undo: Field = undoManager.undoStep(field)
+  def undo: FieldInterface = undoManager.undoStep(field)
 
-  def redo: Field = undoManager.redoStep(field)
+  def redo: FieldInterface = undoManager.redoStep(field)
 
   override def toString: String = field.toString

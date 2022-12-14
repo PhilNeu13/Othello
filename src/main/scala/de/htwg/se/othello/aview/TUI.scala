@@ -2,7 +2,8 @@ package de.htwg.se.othello
 package aview
 
 import controller.Controller
-import model.fieldComponent.{Stone, Field}
+import model.fieldComponent.{FieldInterface}
+import de.htwg.se.othello.model.stoneComponent.Stone
 import scala.io.StdIn.readLine
 import util.{Observer, Event}
 import model.playerComponent.{PlayerStrat,PlayerQueue}

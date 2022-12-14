@@ -6,6 +6,7 @@ import model._
 import util._
 import util.Event
 import model.playerComponent.PlayerQueue
+import model.stoneComponent.Stone
 
 import scala.language.postfixOps
 import scala.swing._
@@ -32,7 +33,7 @@ class GUI(controller: Controller, playerQ: PlayerQueue)
   }
   contents = new BorderPanel {
     add(
-      new CellPanel(controller.field.size, controller.field.size),
+      new CellPanel(controller.field.getSize(), controller.field.getSize()),
       BorderPanel.Position.Center
     )
     add(
@@ -59,7 +60,7 @@ class GUI(controller: Controller, playerQ: PlayerQueue)
           BorderPanel.Position.North
         )
         add(
-          new CellPanel(controller.field.size, controller.field.size),
+          new CellPanel(controller.field.getSize(), controller.field.getSize()),
           BorderPanel.Position.Center
         )
       }
