@@ -8,7 +8,7 @@ import scala.util.{Success, Failure, Try}
 import org.scalactic.Bool
 import java.lang.invoke.WrongMethodTypeException
 
-class PlayerQueue {
+class PlayerQueue /*extends PlayerInterface*/{
   var black: State = new TurnBlack(this)
   var white: State = new TurnWhite(this)
   var currentState: State = new TurnBlack(this)

@@ -2,7 +2,7 @@ package de.htwg.se.othello.model.fieldComponent
 
 //import de.htwg.se.othello.model.FieldInterface
 
-case class Field(matrix: Matrix[Stone]):
+case class Field(matrix: Matrix[Stone])/*extends FieldInterface*/:
   def this(size: Int, filling: Stone) = this(new Matrix(size, filling))
   val size = matrix.size
   val eol = sys.props("line.separator")

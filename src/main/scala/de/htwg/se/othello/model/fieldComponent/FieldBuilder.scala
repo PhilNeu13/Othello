@@ -2,7 +2,7 @@ package de.htwg.se.othello.model.fieldComponent
 
 //import de.htwg.se.othello.model.FieldInterface
 
-class FieldBuilder(size: Int, filling: Stone) {
+class FieldBuilder(size: Int, filling: Stone) /*extends FieldInterface*/{
   val maxRange = 8
 
   val middle = (size / 2) - 1
