@@ -2,12 +2,13 @@ package de.htwg.se.othello
 
 package controller
 
-import model.{Field, MoveCoordinates, Stone}
+import model.fieldComponent.{Field, Stone}
+import model.MoveCoordinates
 import org.scalatest.matchers.should.Matchers._
 import org.scalatest.wordspec.AnyWordSpec
 
 import util.{Observer, Event}
-import de.htwg.se.othello.model.PlayerQueue
+import de.htwg.se.othello.model.playerComponent.PlayerQueue
 
 class ControllerSpec extends AnyWordSpec {
   "The Controller" should {

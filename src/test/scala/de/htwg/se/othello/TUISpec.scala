@@ -4,9 +4,10 @@ package aview
 import org.scalatest.matchers.should.Matchers.*
 import org.scalatest.wordspec.AnyWordSpec
 
-import de.htwg.se.othello.model.{Field, Stone, MoveCoordinates, Player}
+import de.htwg.se.othello.model.fieldComponent.{Field, Stone}
+import de.htwg.se.othello.model.MoveCoordinates
+import de.htwg.se.othello.model.playerComponent.{Player,PlayerQueue}
 import de.htwg.se.othello.controller.Controller
-import de.htwg.se.othello.model.PlayerQueue
 
 class TUISpec extends AnyWordSpec {
   "The TUI" should {
