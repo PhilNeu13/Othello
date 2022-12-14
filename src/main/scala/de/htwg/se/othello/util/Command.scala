@@ -1,32 +1,22 @@
 package de.htwg.se.othello.util
 
-<<<<<<< Updated upstream
 import de.htwg.se.othello.model.Field
-=======
-import de.htwg.se.othello.model.fieldComponent.FieldInterface
->>>>>>> Stashed changes
 
-trait Command[FieldInterface]:
-  def doStep(field: FieldInterface): FieldInterface
-  def undoStep(field: FieldInterface): FieldInterface
-  def redoStep(field: FieldInterface): FieldInterface
+trait Command[Field]:
+  def doStep(field: Field): Field
+  def undoStep(field: Field): Field
+  def redoStep(field: Field): Field
 
-<<<<<<< Updated upstream
 class UndoManager[Field]:
   private var undoStack: List[Command[Field]] = Nil
   private var redoStack: List[Command[Field]] = Nil
-=======
-class DoManager[FieldInterface]:
-  private var undoStack: List[Command[FieldInterface]] = Nil
-  private var redoStack: List[Command[FieldInterface]] = Nil
->>>>>>> Stashed changes
 
-  def doStep(field: FieldInterface, command: Command[FieldInterface]): FieldInterface =
+  def doStep(field: Field, command: Command[Field]): Field =
     undoStack = command :: undoStack
     redoStack = redoStack.empty
     command.doStep(field)
 
-  def undoStep(field: FieldInterface): FieldInterface =
+  def undoStep(field: Field): Field =
     undoStack match {
       case Nil => field
       case head :: stack => {
@@ -36,7 +26,7 @@ class DoManager[FieldInterface]:
         result
       }
     }
-  def redoStep(field: FieldInterface): FieldInterface =
+  def redoStep(field: Field): Field =
     redoStack match {
       case Nil => field
       case head :: stack => {

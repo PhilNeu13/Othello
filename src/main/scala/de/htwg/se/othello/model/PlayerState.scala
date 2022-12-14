@@ -1,5 +1,6 @@
 package de.htwg.se.othello.model
 
+
 class PlayerQueue {
   var black: State = new TurnBlack(this)
   var white: State = new TurnWhite(this)
@@ -9,12 +10,12 @@ class PlayerQueue {
   def changeState(): Unit = currentState.changeState()
 }
 
+
 trait State {
   def changeState(): Unit
 }
 
-class TurnBlack(playerQueue: PlayerQueue) extends State {
-
+  class TurnBlack(playerQueue: PlayerQueue) extends State {
   def changeState(): Unit =
     playerQueue.prevState = this
     playerQueue.currentState = playerQueue.white
@@ -27,27 +28,9 @@ class TurnWhite(playerQueue: PlayerQueue) extends State {
     playerQueue.currentState = playerQueue.black
 
 }
-object PlayerState {
-  def strategy(
-      currentState: State,
-      move: MoveCoordinates,
-      playerQ: PlayerQueue
-  ) =
-    if (currentState == playerQ.currentState)
+var strategy(move: MoveCoordinates => Boolean) =
+    if (turn == 1)
       stratPlayer1(move)
-    else stratPlayer2(move)
+    else
+      stratPlayer2(move)
 
-  def stratPlayer1(move: MoveCoordinates): Boolean = {
-    move.stone match {
-      case Stone.B => true
-      case _       => false
-    }
-  }
-
-  def stratPlayer2(move: MoveCoordinates): Boolean = {
-    move.stone match {
-      case Stone.W => true
-      case _       => false
-    }
-  }
-}
