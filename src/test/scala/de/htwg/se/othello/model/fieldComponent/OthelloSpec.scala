@@ -2,7 +2,8 @@
 // https://scalameta.org/munit/docs/getting-started.html
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
-import de.htwg.se.othello.model.fieldComponent.{Field,Stone}
+import de.htwg.se.othello.model.fieldComponent.Field
+import de.htwg.se.othello.model.stoneComponent._
 
 class OthelloSpec extends AnyWordSpec {
   "An Othello Field" when {

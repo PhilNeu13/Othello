@@ -2,10 +2,11 @@ package de.htwg.se.othello
 
 package controller
 
-import model.fieldComponent.{Field, Stone}
+import model.fieldComponent.Field
 import model.MoveCoordinates
 import org.scalatest.matchers.should.Matchers._
 import org.scalatest.wordspec.AnyWordSpec
+import de.htwg.se.othello.model.stoneComponent._
 
 import util.{Observer, Event}
 import de.htwg.se.othello.model.playerComponent.PlayerQueue

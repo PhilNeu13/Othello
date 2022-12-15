@@ -1,6 +1,6 @@
 package de.htwg.se.othello
 
-import de.htwg.se.othello.model.fieldComponent.Stone
+import de.htwg.se.othello.model.stoneComponent.Stone
 import de.htwg.se.othello.model.playerComponent.Player
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._

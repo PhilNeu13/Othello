@@ -1,7 +1,7 @@
 package de.htwg.se.othello
 import de.htwg.se.othello.model.playerComponent.{PlayerStrat, PlayerQueue}
 import de.htwg.se.othello.model.MoveCoordinates
-import de.htwg.se.othello.model.fieldComponent.Stone
+import de.htwg.se.othello.model.stoneComponent.Stone
 import org.scalatest.matchers.should.Matchers.*
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.must.Matchers
