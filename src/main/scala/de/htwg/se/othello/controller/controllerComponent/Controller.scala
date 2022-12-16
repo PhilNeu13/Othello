@@ -7,7 +7,7 @@ import de.htwg.se.othello.util.{Observer,Observable, DoManager, Event}
 import scala.collection.mutable.ListBuffer
 
 case class Controller(var field: FieldInterface, playerQ: PlayerQueue)
-    extends Observable:
+    extends Observable with ControllerInterface():
   val undoManager = new DoManager[FieldInterface]
 
   def addFirstPlayer(playerName: String): String =
@@ -20,13 +20,16 @@ case class Controller(var field: FieldInterface, playerQ: PlayerQueue)
     field = doThis(move)
     notifyObservers(Event.Move)
 
+  def getField: FieldInterface =
+    field
+
   def put(move: MoveCoordinates): FieldInterface =
     if (field.get(move.x, move.y) == Stone.Empty)
       playerQ.currentState.changeState()
       undoManager.doStep(field, CmdController(move))
     else field
 
-  def quit: Unit = notifyObservers(Event.Quit)
+  def quit(): Unit = notifyObservers(Event.Quit)
 
   def doAndNotify(doThis: => FieldInterface) =
     field = doThis

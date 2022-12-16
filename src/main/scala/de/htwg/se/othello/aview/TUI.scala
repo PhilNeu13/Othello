@@ -1,7 +1,7 @@
 package de.htwg.se.othello
 package aview
 
-import controller.controllerComponent._
+import controller.controllerComponent.{ControllerInterface}
 import controller._
 import model.fieldComponent.{FieldInterface}
 import de.htwg.se.othello.model.Stone
@@ -10,7 +10,7 @@ import util.{Observer, Event}
 import model.{PlayerStrat,PlayerQueue}
 import scala.util.{Try, Success, Failure}
 import model.MoveCoordinates
-class TUI(controller: Controller, playerQ: PlayerQueue) extends UI(controller):
+class TUI(controller: ControllerInterface, playerQ: PlayerQueue) extends UI(controller):
 
   val playerState = PlayerStrat(playerQ)
   var continue = true
@@ -18,7 +18,7 @@ class TUI(controller: Controller, playerQ: PlayerQueue) extends UI(controller):
   override def update(e: Event) =
     e match
       case Event.Quit => continue = false
-      case Event.Move => println(controller.field.toString)
+      case Event.Move => println(controller.getField.toString)
 
   def controllMove: Unit =
     println("To Play: Type in <W/B><x_value><y_value>!\nTo quit: Type q!\n")

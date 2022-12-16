@@ -1,7 +1,7 @@
 package de.htwg.se.othello
 package aview
 
-import controller.controllerComponent._
+import controller.controllerComponent.{ControllerInterface}
 import model._
 import util._
 import util.Event
@@ -11,7 +11,7 @@ import scala.language.postfixOps
 import scala.swing._
 import scala.swing.event._
 
-class GUI(controller: Controller, playerQ: PlayerQueue)
+class GUI(controller: ControllerInterface, playerQ: PlayerQueue)
     extends Frame
     with UI(controller):
   override def controllMove: Unit = None
@@ -21,7 +21,7 @@ class GUI(controller: Controller, playerQ: PlayerQueue)
   title = "Othello"
   menuBar = new MenuBar {
     contents += new MenuItem(Action("Exit") {
-      controller.quit
+      controller.quit()
     })
     contents += new MenuItem(Action("Undo") {
       controller.doAndNotify(controller.undo)
@@ -32,7 +32,7 @@ class GUI(controller: Controller, playerQ: PlayerQueue)
   }
   contents = new BorderPanel {
     add(
-      new CellPanel(controller.field.getSize(), controller.field.getSize()),
+      new CellPanel(controller.getField.getSize(), controller.getField.getSize()),
       BorderPanel.Position.Center
     )
     add(
@@ -59,7 +59,7 @@ class GUI(controller: Controller, playerQ: PlayerQueue)
           BorderPanel.Position.North
         )
         add(
-          new CellPanel(controller.field.getSize(), controller.field.getSize()),
+          new CellPanel(controller.getField.getSize(), controller.getField.getSize()),
           BorderPanel.Position.Center
         )
       }
@@ -68,7 +68,7 @@ class GUI(controller: Controller, playerQ: PlayerQueue)
   class CellPanel(r: Int, c: Int) extends GridPanel(r, c):
     var list: List[CellButton] = List()
     for (i <- 0 to r - 1; j <- 0 to c - 1) {
-      list = list :+ CellButton(i, j, controller.field.get(i, j).toString)
+      list = list :+ CellButton(i, j, controller.getField.get(i, j).toString)
     }
     list.foreach(t => contents += t)
 

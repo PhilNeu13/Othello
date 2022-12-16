@@ -1,7 +1,7 @@
 package de.htwg.se.othello.controller.controllerComponent
 
 import de.htwg.se.othello.model._
-import de.htwg.se.othello.model.fieldComponent.FieldInterface
+import de.htwg.se.othello.model.fieldComponent.{FieldInterface, Field}
 import de.htwg.se.othello.util.{Observable, Observer, DoManager, Event}
 
 trait ControllerInterface extends Observable:
@@ -12,3 +12,4 @@ trait ControllerInterface extends Observable:
   def undo: FieldInterface
   def redo: FieldInterface
   def toString: String
+  def getField: FieldInterface
