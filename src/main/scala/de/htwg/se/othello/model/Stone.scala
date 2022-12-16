@@ -1,4 +1,4 @@
-package de.htwg.se.othello.model.stoneComponent
+package de.htwg.se.othello.model
 
 enum Stone(stringRep: String){
   override def toString = stringRep

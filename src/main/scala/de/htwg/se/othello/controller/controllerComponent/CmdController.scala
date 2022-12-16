@@ -1,4 +1,4 @@
-package de.htwg.se.othello.controller
+package de.htwg.se.othello.controller.controllerComponent
 import de.htwg.se.othello.model.MoveCoordinates
 import de.htwg.se.othello.model.fieldComponent.FieldInterface
 import de.htwg.se.othello.util.Command

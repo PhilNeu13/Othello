@@ -1,11 +1,11 @@
 package de.htwg.se.othello
 
 import model.fieldComponent.{FieldBuilder}
-import de.htwg.se.othello.model.stoneComponent.Stone
-import model.playerComponent.PlayerQueue
+import de.htwg.se.othello.model.Stone
+import model.PlayerQueue
 import aview.GUI
 import scala.io.StdIn._
-import controller.Controller
+import controller.controllerComponent.Controller
 import aview.TUI
 
 @main def Othello: Unit =

@@ -1,7 +1,7 @@
-package de.htwg.se.othello.model.playerComponent
+package de.htwg.se.othello.model
 
 //import de.htwg.se.othello.model.playerComponent.PlayerInterface
-import de.htwg.se.othello.model.stoneComponent.Stone
+import de.htwg.se.othello.model.Stone
 
 case class Player(name: String, stone: Stone) /*extends PlayerInterface*/{
 

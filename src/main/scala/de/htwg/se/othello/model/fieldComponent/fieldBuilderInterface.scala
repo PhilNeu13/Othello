@@ -1,6 +1,6 @@
 package de.htwg.se.othello.model.fieldComponent
 
-import de.htwg.se.othello.model.fieldComponent.fieldBuilderMockImpl.FieldBuilder
+import de.htwg.se.othello.model.fieldComponent.FieldBuilder
 
 trait FieldBuilderInterface {
 

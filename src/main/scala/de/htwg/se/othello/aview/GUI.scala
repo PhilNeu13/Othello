@@ -1,12 +1,11 @@
 package de.htwg.se.othello
 package aview
 
-import controller._
+import controller.controllerComponent._
 import model._
 import util._
 import util.Event
-import model.playerComponent.PlayerQueue
-import model.stoneComponent.Stone
+import model.Stone
 
 import scala.language.postfixOps
 import scala.swing._

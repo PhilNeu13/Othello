@@ -1,8 +1,8 @@
-package de.htwg.se.othello
-package controller
+package de.htwg.se.othello.controller.controllerComponent
 
-import model._
-import util.{Observable, Observer, DoManager, Event}
+import de.htwg.se.othello.model._
+import de.htwg.se.othello.model.fieldComponent.FieldInterface
+import de.htwg.se.othello.util.{Observable, Observer, DoManager, Event}
 
 trait ControllerInterface extends Observable:
   def doAndNotify(doThis: MoveCoordinates => FieldInterface, coordinates: MoveCoordinates): Unit

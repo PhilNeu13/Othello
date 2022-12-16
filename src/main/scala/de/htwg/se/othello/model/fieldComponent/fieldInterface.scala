@@ -1,6 +1,7 @@
 package de.htwg.se.othello.model.fieldComponent
 
-import de.htwg.se.othello.model.stoneComponent.Stone
+import de.htwg.se.othello.model.Stone
+import de.htwg.se.othello.model.matrixComponent.{Matrix, MatrixInterface}
 
 trait FieldInterface {
 

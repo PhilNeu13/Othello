@@ -1,11 +1,9 @@
-package de.htwg.se.othello
-package controller
+package de.htwg.se.othello.controller.controllerComponent
 
-import model.playerComponent._
-import de.htwg.se.othello.model.stoneComponent.Stone
-import model.fieldComponent.FieldInterface
-import model.MoveCoordinates
-import util.{Observable, Observer, DoManager, Event}
+//import de.htwg.se.othello.model._
+import de.htwg.se.othello.model.fieldComponent.FieldInterface
+import de.htwg.se.othello.model._
+import de.htwg.se.othello.util.{Observer,Observable, DoManager, Event}
 import scala.collection.mutable.ListBuffer
 
 case class Controller(var field: FieldInterface, playerQ: PlayerQueue)

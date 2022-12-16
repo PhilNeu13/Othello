@@ -1,9 +1,10 @@
 package de.htwg.se.othello.model.fieldComponent
 
 import de.htwg.se.othello.model.fieldComponent.FieldInterface
-import de.htwg.se.othello.model.stoneComponent.Stone
+import de.htwg.se.othello.model.Stone
+import de.htwg.se.othello.model.matrixComponent.{Matrix, MatrixInterface}
 
-case class Field(matrix: Matrix[Stone]) extends FieldInterface:
+case class Field(matrix: MatrixInterface[Stone]) extends FieldInterface:
   def this(size: Int, filling: Stone) = this(new Matrix(size, filling))
   val size = matrix.size
   val eol = sys.props("line.separator")
