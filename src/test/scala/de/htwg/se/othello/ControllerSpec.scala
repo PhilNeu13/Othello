@@ -56,6 +56,6 @@ class ControllerSpec extends AnyWordSpec {
 
     controller.doAndNotify(controller.undo)
     controller.doAndNotify(controller.redo)
-    controller.quit
+    controller.quit()
   }
 }
