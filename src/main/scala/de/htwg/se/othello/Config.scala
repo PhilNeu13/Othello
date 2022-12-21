@@ -6,14 +6,13 @@ import model.PlayerQueue
 import aview.GUI
 import scala.io.StdIn._
 import controller.controllerComponent.Controller
+import controller.controllerComponent.ControllerInterface
+import model.fieldComponent.FieldInterface
 import aview.TUI
-import de.htwg.se.othello.Config.{given}
 
-
-@main def Othello: Unit =
-  println("\nWelcome to Othello!")
-  //val field = FieldBuilder(8, Stone.Empty).createOthelloField()
+object Config {
+  val field = FieldBuilder(8, Stone.Empty).createOthelloField()
+  given FieldInterface = field
   val playerQ = new PlayerQueue()
-  //val controller = Controller(playerQ)
-  new GUI(playerQ).start
-  new TUI(playerQ).start
+  given ControllerInterface = Controller(playerQ)
+}

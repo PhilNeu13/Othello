@@ -10,8 +10,9 @@ import model.Stone
 import scala.language.postfixOps
 import scala.swing._
 import scala.swing.event._
+import de.htwg.se.othello.Config.{given}
 
-class GUI(controller: ControllerInterface, playerQ: PlayerQueue)
+class GUI(using controller: ControllerInterface, playerQ: PlayerQueue)
     extends Frame
     with UI(controller):
   override def controllMove: Unit = None
