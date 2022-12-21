@@ -1,6 +1,6 @@
 package de.htwg.se.othello.controller.controllerComponent
 
-//import de.htwg.se.othello.model._
+import de.htwg.se.othello.model.playerQueueComponent.PlayerQueueInterface
 import de.htwg.se.othello.model.fieldComponent.FieldInterface
 import de.htwg.se.othello.model._
 import de.htwg.se.othello.util.{Observer,Observable, DoManager, Event}
@@ -8,7 +8,7 @@ import scala.collection.mutable.ListBuffer
 
 import de.htwg.se.othello.Config.{given}
 
-class Controller(using var field: FieldInterface, playerQ: PlayerQueue)
+class Controller(using var field: FieldInterface, playerQ: PlayerQueueInterface)
     extends Observable with ControllerInterface():
   val undoManager = new DoManager[FieldInterface]
 

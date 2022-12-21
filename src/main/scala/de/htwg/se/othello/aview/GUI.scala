@@ -5,6 +5,8 @@ import controller.controllerComponent.{ControllerInterface}
 import model._
 import util._
 import util.Event
+import model.playerQueueComponent.{PlayerQueueInterface}
+//import model.playerQueueComponent.PlayerQueue
 import model.Stone
 
 import scala.language.postfixOps
@@ -12,7 +14,7 @@ import scala.swing._
 import scala.swing.event._
 import de.htwg.se.othello.Config.{given}
 
-class GUI(using controller: ControllerInterface, playerQ: PlayerQueue)
+class GUI(using controller: ControllerInterface, playerQ: PlayerQueueInterface)
     extends Frame
     with UI(controller):
   override def controllMove: Unit = None

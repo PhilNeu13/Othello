@@ -10,9 +10,11 @@ import util.{Observer, Event}
 import model.{PlayerStrat,PlayerQueue}
 import scala.util.{Try, Success, Failure}
 import model.MoveCoordinates
+import model.playerQueueComponent.{PlayerQueueInterface}
+//import model.playerQueueComponent.PlayerQueue
 import de.htwg.se.othello.Config.{given}
 
-class TUI(using controller: ControllerInterface, playerQ: PlayerQueue) extends UI(controller):
+class TUI(using controller: ControllerInterface, playerQ: PlayerQueueInterface) extends UI(controller):
 
   val playerState = PlayerStrat(playerQ)
   var continue = true
