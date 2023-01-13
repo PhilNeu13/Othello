@@ -3,7 +3,8 @@ package aview
 
 import controller.controllerComponent.{ControllerInterface}
 import model.MoveCoordinates
-import model.{PlayerQueue, TurnBlack, TurnWhite, Player}
+import model.playerQueueComponent.{PlayerQueueInterface, TurnBlack, TurnWhite}
+import model.Player
 import model.fieldComponent.{Field}
 import de.htwg.se.othello.model.Stone
 import scala.io.StdIn.readLine
