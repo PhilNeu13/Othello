@@ -11,7 +11,7 @@ import model.fieldComponent.FieldInterface
 import aview.TUI
 
 object Config {
-  val field = FieldBuilder(8, Stone.Empty).createOthelloField()
+  var field = FieldBuilder(8, Stone.Empty).createOthelloField()
   given FieldInterface = field
   val playerQ = new PlayerQueue()
   given PlayerQueueInterface = playerQ
