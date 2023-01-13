@@ -1,6 +1,9 @@
 package de.htwg.se.othello.model
 
-case class Player(name: String, stone: Stone) {
+//import de.htwg.se.othello.model.playerComponent.PlayerInterface
+import de.htwg.se.othello.model.Stone
+
+case class Player(name: String, stone: Stone) /*extends PlayerInterface*/{
 
   override def toString: String =
     s"$name has Stone " + stone.toString()

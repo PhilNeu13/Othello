@@ -1,21 +1,20 @@
 package de.htwg.se.othello
 
+import model.fieldComponent.{FieldBuilder}
 import de.htwg.se.othello.model.Stone
-import de.htwg.se.othello.model.Matrix
-
-import de.htwg.se.othello.model.{FieldBuilder, Field}
+import model.playerQueueComponent.PlayerQueueInterface
+import model.playerQueueComponent.PlayerQueue
 import aview.GUI
 import scala.io.StdIn._
-import controller.Controller
+import controller.controllerComponent.Controller
 import aview.TUI
-import de.htwg.se.othello.model.PlayerQueue
+import de.htwg.se.othello.Config.{given}
+
 
 @main def Othello: Unit =
   println("\nWelcome to Othello!")
-  val field = FieldBuilder(8, Stone.Empty).createOthelloField()
-  val playerQ = new PlayerQueue()
-  val controller = Controller(field, playerQ)
-  val gui = GUI(controller, playerQ)
-  gui.start
-  val tui = TUI(controller, playerQ)
-  tui.start
+  //val field = FieldBuilder(8, Stone.Empty).createOthelloField()
+  //new PlayerQueue()
+  //val controller = Controller(playerQ)
+  new GUI().start
+  new TUI().start

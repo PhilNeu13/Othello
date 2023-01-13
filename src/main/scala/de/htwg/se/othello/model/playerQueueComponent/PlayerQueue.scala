@@ -1,16 +1,14 @@
+package de.htwg.se.othello.model.playerQueueComponent
 
-package de.htwg.se.othello.model
-
-//import de.htwg.se.othello.model.playerComponent.PlayerInterface
+import de.htwg.se.othello.model.playerQueueComponent.{PlayerQueueInterface}
 import de.htwg.se.othello.model.MoveCoordinates
 import de.htwg.se.othello.model.fieldComponent
 import de.htwg.se.othello.model.Stone
 import scala.util.{Success, Failure, Try}
 import org.scalactic.Bool
 import java.lang.invoke.WrongMethodTypeException
-import playerQueueComponent.PlayerQueueInterface
 
-class PlayerQueue /*extends PlayerInterface*/{
+class PlayerQueue extends PlayerQueueInterface {
   var black: State = new TurnBlack(this)
   var white: State = new TurnWhite(this)
   var currentState: State = new TurnBlack(this)
@@ -42,26 +40,4 @@ class TurnWhite(playerQueue: PlayerQueue) extends State {
   def getStone(): Stone =
     Stone.W
 
-}
-class PlayerStrat(playerQ: PlayerQueueInterface) /*extends PlayerInterface */{
-  def strategy(
-      move: MoveCoordinates
-  ) =
-    if (playerQ.currentState.isInstanceOf[TurnBlack])
-      stratPlayer1(move)
-    else stratPlayer2(move)
-
-  def stratPlayer1(move: MoveCoordinates): Try[Boolean] = {
-    move.stone match {
-      case Stone.B => Success(true)
-      case _       => Failure(new Exception("Wrong Player/Stone"))
-    }
-  }
-
-  def stratPlayer2(move: MoveCoordinates): Try[Boolean] = {
-    move.stone match {
-      case Stone.W => Success(true)
-      case _       => Failure(new Exception("Wrong Player/Stone"))
-    }
-  }
 }

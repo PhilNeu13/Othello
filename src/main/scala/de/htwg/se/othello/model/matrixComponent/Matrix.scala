@@ -1,6 +1,9 @@
-package de.htwg.se.othello.model
+package de.htwg.se.othello.model.matrixComponent
 
-case class Matrix[T](rows: Vector[Vector[T]]) {
+import de.htwg.se.othello.model.fieldComponent.FieldInterface
+import de.htwg.se.othello.model.matrixComponent.MatrixInterface
+
+case class Matrix[T](rows: Vector[Vector[T]]) extends MatrixInterface[T] {
   def this(size: Int, filling: T) = this(Vector.tabulate(size, size) {
     (row, col) => filling
   })

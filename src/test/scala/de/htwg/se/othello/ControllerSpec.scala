@@ -1,12 +1,13 @@
-package de.htwg.se.othello
+package de.htwg.se.othello.controller.controllerComponent
 
-package controller
 
-import model.{Field, MoveCoordinates, Stone}
+import de.htwg.se.othello.model.fieldComponent.Field
+import de.htwg.se.othello.model.MoveCoordinates
 import org.scalatest.matchers.should.Matchers._
 import org.scalatest.wordspec.AnyWordSpec
+import de.htwg.se.othello.model._
 
-import util.{Observer, Event}
+import de.htwg.se.othello.util.{Observer, Event}
 import de.htwg.se.othello.model.PlayerQueue
 
 class ControllerSpec extends AnyWordSpec {
@@ -55,6 +56,6 @@ class ControllerSpec extends AnyWordSpec {
 
     controller.doAndNotify(controller.undo)
     controller.doAndNotify(controller.redo)
-    controller.quit
+    controller.quit()
   }
 }

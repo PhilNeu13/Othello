@@ -1,7 +1,7 @@
 package de.htwg.se.othello
 
 import org.scalatest.wordspec.AnyWordSpec
-import de.htwg.se.othello.model.Matrix
+import de.htwg.se.othello.model.matrixComponent.Matrix
 import org.scalatest.matchers.should.Matchers._
 
 class MatrixSpec extends AnyWordSpec {
