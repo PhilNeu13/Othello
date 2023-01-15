@@ -49,14 +49,16 @@ class TUI(using controller: ControllerInterface, playerQ: PlayerQueueInterface) 
       case "s" => controller.doAndNotify(controller.save); None
       case "l" => controller.doAndNotify(controller.load); None
       case _ => {
-        val chars = eingabe.toCharArray
-        val stone = chars(0) match {
-          case 'B' => Stone.B
-          case 'W' => Stone.W
-          case _   => Stone.Empty
-        }
-        val x = chars(1).toString.toInt
-        val y = chars(2).toString.toInt
-        Some(MoveCoordinates(stone, x, y))
+        if (eingabe != null) {
+          val chars = eingabe.toCharArray
+          val stone = chars(0) match {
+            case 'B' => Stone.B
+            case 'W' => Stone.W
+            case _   => Stone.Empty
+          }
+          val x = chars(1).toString.toInt
+          val y = chars(2).toString.toInt
+          Some(MoveCoordinates(stone, x, y))
+        } else (None)
       }
     }

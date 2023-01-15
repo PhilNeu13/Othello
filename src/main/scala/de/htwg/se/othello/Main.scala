@@ -18,3 +18,4 @@ import de.htwg.se.othello.Config.{given}
   //val controller = Controller(playerQ)
   new GUI().start
   new TUI().start
+  while(true){}
