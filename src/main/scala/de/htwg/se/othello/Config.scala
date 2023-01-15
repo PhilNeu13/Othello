@@ -7,6 +7,8 @@ import model.playerQueueComponent.{PlayerQueueInterface, PlayerQueue}
 import aview.GUI
 import controller.controllerComponent.Controller
 import controller.controllerComponent.ControllerInterface
+import de.htwg.se.othello.model.fileIOComponent.fileIOjsonimpl.FileIO
+import de.htwg.se.othello.model.fileIOComponent.FileIOInterface
 import model.fieldComponent.FieldInterface
 import aview.TUI
 
@@ -15,5 +17,6 @@ object Config {
   given FieldInterface = field
   val playerQ = new PlayerQueue()
   given PlayerQueueInterface = playerQ
+  given FileIOInterface = FileIO()
   given ControllerInterface = Controller()
 }

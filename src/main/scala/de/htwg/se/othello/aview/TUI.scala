@@ -46,6 +46,8 @@ class TUI(using controller: ControllerInterface, playerQ: PlayerQueueInterface) 
       case "q" => None
       case "u" => controller.doAndNotify(controller.undo); None
       case "r" => controller.doAndNotify(controller.redo); None
+      case "s" => controller.doAndNotify(controller.save); None
+      case "l" => controller.doAndNotify(controller.load); None
       case _ => {
         val chars = eingabe.toCharArray
         val stone = chars(0) match {

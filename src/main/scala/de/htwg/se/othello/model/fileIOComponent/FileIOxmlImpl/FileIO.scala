@@ -1,9 +1,9 @@
-package de.htwg.se.othello.model.fileIOComponent.fileIOxmlimpl
+/*package de.htwg.se.othello.model.fileIOComponent.fileIOxmlimpl
 
 import de.htwg.se.othello.Config
-import de.htwg.se.astragaloi.model.fileIOComponent.FileIOInterface
-import de.htwg.se.astragaloi.model.fieldComponent.FieldInterface
-import de.htwg.se.astragaloi.model.fieldComponent._
+import de.htwg.se.othello.model.fileIOComponent.FileIOInterface
+import de.htwg.se.othello.model.fieldComponent.FieldInterface
+import de.htwg.se.othello.model.fieldComponent._
 import scala.xml.{ NodeSeq, PrettyPrinter }
 
 class FileIO extends FileIOInterface {
@@ -29,7 +29,7 @@ class FileIO extends FileIOInterface {
     field
   }
 
-  def save(field: FieldInterface): Unit = saveString(field)
+  override def save(field: FieldInterface): Unit = saveString(field)
 
   def saveXML(field: FieldInterface): Unit = {
     scala.xml.XML.save("field.xml", fieldToXml(field))
@@ -59,4 +59,4 @@ class FileIO extends FileIOInterface {
     { field.get(row, col).toString }
     </cell>
   }
-}
+}*/

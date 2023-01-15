@@ -1,4 +1,4 @@
-package de.htwg.se.othello.model.fileIoComponent
+package de.htwg.se.othello.model.fileIOComponent
 
 import de.htwg.se.othello.model.fieldComponent.FieldInterface
 
