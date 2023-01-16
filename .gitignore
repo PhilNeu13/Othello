@@ -42,3 +42,9 @@ bin/
 # general
 *.class
 
+# xml
+.xml
+
+#json
+.json
+
