@@ -1,8 +1,9 @@
-/*package de.htwg.se.othello.model.fileIOComponent.fileIOxmlimpl
+package de.htwg.se.othello.model.fileIOComponent.fileIOxmlimpl
 
 import de.htwg.se.othello.Config
 import de.htwg.se.othello.model.fileIOComponent.FileIOInterface
 import de.htwg.se.othello.model.fieldComponent.FieldInterface
+import de.htwg.se.othello.model.Stone
 import de.htwg.se.othello.model.fieldComponent._
 import scala.xml.{ NodeSeq, PrettyPrinter }
 
@@ -47,8 +48,8 @@ class FileIO extends FileIOInterface {
     <field size={ field.size.toString }>
       {
       for {
-        row <- 1 until field.size + 1
-        col <- 1 until field.size + 1
+        row <- 1 until field.size //+ 1
+        col <- 1 until field.size //+ 1
       } yield cellToXml(field, row, col)
       }
     </field>
@@ -59,4 +60,4 @@ class FileIO extends FileIOInterface {
     { field.get(row, col).toString }
     </cell>
   }
-}*/
+}
