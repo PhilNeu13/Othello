@@ -43,8 +43,8 @@ bin/
 *.class
 
 # xml
-.xml
+field.xml
 
 #json
-.json
+field.json
 
