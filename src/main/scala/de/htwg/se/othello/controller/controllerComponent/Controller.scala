@@ -37,8 +37,10 @@ class Controller(using var field: FieldInterface, playerQ: PlayerQueueInterface,
   def quit(): Unit = notifyObservers(Event.Quit)
 
   def doAndNotify(doThis: => FieldInterface) =
+    val temp = field
     field = doThis
-    playerQ.currentState.changeState()
+    if(field != temp)
+      playerQ.currentState.changeState()
     notifyObservers(Event.Move)
 
   def undo: FieldInterface = undoManager.undoStep(field)
