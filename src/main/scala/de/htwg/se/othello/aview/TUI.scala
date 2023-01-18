@@ -7,7 +7,7 @@ import model.fieldComponent.{FieldInterface}
 import de.htwg.se.othello.model.Stone
 import scala.io.StdIn.readLine
 import util.{Observer, Event}
-import model.{PlayerStrat,PlayerQueue}
+import model.{PlayerStrat}
 import scala.util.{Try, Success, Failure}
 import model.MoveCoordinates
 import model.playerQueueComponent.{PlayerQueueInterface}
