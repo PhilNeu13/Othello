@@ -1,5 +1,6 @@
 package de.htwg.se.othello
-import de.htwg.se.othello.model.{PlayerStrat, PlayerQueue}
+import de.htwg.se.othello.model.{PlayerStrat}
+import de.htwg.se.othello.model.playerQueueComponent.{PlayerQueue}
 import de.htwg.se.othello.model.MoveCoordinates
 import de.htwg.se.othello.model.Stone
 import org.scalatest.matchers.should.Matchers.*

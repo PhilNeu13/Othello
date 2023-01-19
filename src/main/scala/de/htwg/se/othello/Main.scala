@@ -19,3 +19,4 @@ import de.htwg.se.othello.Config.{given}
   new GUI().start
   new TUI().start
   while(true){}
+  

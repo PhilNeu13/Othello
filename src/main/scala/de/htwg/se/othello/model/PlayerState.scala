@@ -10,7 +10,7 @@ import org.scalactic.Bool
 import java.lang.invoke.WrongMethodTypeException
 import playerQueueComponent.PlayerQueueInterface
 
-class PlayerQueue /*extends PlayerInterface*/{
+/*class PlayerQueue /*extends PlayerInterface*/{
   var black: State = new TurnBlack(this)
   var white: State = new TurnWhite(this)
   var currentState: State = new TurnBlack(this)
@@ -42,12 +42,12 @@ class TurnWhite(playerQueue: PlayerQueue) extends State {
   def getStone(): Stone =
     Stone.W
 
-}
+}*/
 class PlayerStrat(playerQ: PlayerQueueInterface) /*extends PlayerInterface */{
   def strategy(
       move: MoveCoordinates
   ) =
-    if (playerQ.currentState.isInstanceOf[TurnBlack])
+    if (playerQ.currentState.getStone() ==  Stone.B)
       stratPlayer1(move)
     else stratPlayer2(move)
 

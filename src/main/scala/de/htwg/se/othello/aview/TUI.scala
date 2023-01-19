@@ -7,7 +7,7 @@ import model.fieldComponent.{FieldInterface}
 import de.htwg.se.othello.model.Stone
 import scala.io.StdIn.readLine
 import util.{Observer, Event}
-import model.{PlayerStrat,PlayerQueue}
+import model.{PlayerStrat}
 import scala.util.{Try, Success, Failure}
 import model.MoveCoordinates
 import model.playerQueueComponent.{PlayerQueueInterface}
@@ -59,6 +59,6 @@ class TUI(using controller: ControllerInterface, playerQ: PlayerQueueInterface) 
           val x = chars(1).toString.toInt
           val y = chars(2).toString.toInt
           Some(MoveCoordinates(stone, x, y))
-        } else (None)
+        } else(None)
       }
     }

@@ -1,10 +1,13 @@
-/*package de.htwg.se.othello.model.fileIOComponent.fileIOxmlimpl
+package de.htwg.se.othello.model.fileIOComponent.fileIOxmlimpl
 
 import de.htwg.se.othello.Config
 import de.htwg.se.othello.model.fileIOComponent.FileIOInterface
 import de.htwg.se.othello.model.fieldComponent.FieldInterface
+import de.htwg.se.othello.model.fieldComponent.Field
+import de.htwg.se.othello.model.Stone
 import de.htwg.se.othello.model.fieldComponent._
 import scala.xml.{ NodeSeq, PrettyPrinter }
+
 
 class FileIO extends FileIOInterface {
 
@@ -21,15 +24,15 @@ class FileIO extends FileIOInterface {
       val value: String = cell.text.trim.toString
       value match {
         case " " => field = field.put(Stone.Empty, row, col)
-        case "W" => field = field.put(Stone.W, row, col)
         case "B" => field = field.put(Stone.B, row, col)
+        case "W" => field = field.put(Stone.W, row, col)
         case _ =>
       }
     }
     field
   }
 
-  override def save(field: FieldInterface): Unit = saveString(field)
+  def save(field: FieldInterface): Unit = saveString(field)
 
   def saveXML(field: FieldInterface): Unit = {
     scala.xml.XML.save("field.xml", fieldToXml(field))
@@ -44,11 +47,11 @@ class FileIO extends FileIOInterface {
     pw.close
   }
   def fieldToXml(field: FieldInterface) = {
-    <field size={ field.size.toString }>
+    <field size={ field.getSize().toString }>
       {
       for {
-        row <- 1 until field.size + 1
-        col <- 1 until field.size + 1
+        row <- 1 until field.getSize() 
+        col <- 1 until field.getSize()
       } yield cellToXml(field, row, col)
       }
     </field>
@@ -59,4 +62,4 @@ class FileIO extends FileIOInterface {
     { field.get(row, col).toString }
     </cell>
   }
-}*/
+}

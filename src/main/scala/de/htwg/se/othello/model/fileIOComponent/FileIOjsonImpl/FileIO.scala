@@ -16,17 +16,17 @@ class FileIO extends FileIOInterface {
     val size = (json \ "field" \ "size").get.toString.toInt
     var field: FieldInterface = new Field(size, Stone.Empty)
 
-      for ((index) <- 0 until size * size) {
-        val row = (json \\ "row")(index).as[Int]
-        val col = (json \\ "col")(index).as[Int]
-        val value = (json \\ "cell")(index).as[String]
-        value match {
-          case " " => field = field.put(Stone.Empty, row, col)
-          case "B" => field = field.put(Stone.B, row, col)
-          case "W" => field = field.put(Stone.W, row, col)
-          case _ =>
-        }
+    for ((index) <- 0 until (size - 1) * (size - 1)) {
+      val row = (json \\ "row")(index).as[Int]
+      val col = (json \\ "col")(index).as[Int]
+      val value = (json \\ "cell")(index).as[String]
+      value match {
+        case " " => field = field.put(Stone.Empty, row, col)
+        case "B" => field = field.put(Stone.B, row, col)
+        case "W" => field = field.put(Stone.W, row, col)
+        case _ =>
       }
+    }
     field
   }
 
@@ -43,12 +43,14 @@ class FileIO extends FileIOInterface {
         "size" -> JsNumber(field.getSize()),
         "cells" -> Json.toJson(
           for {
-            row <- 1 until field.getSize()
-            col <- 1 until field.getSize()
+            row <- 0 until field.getSize()
+            col <- 0 until field.getSize()
           } yield {
-            "row" -> row
-            "col" -> col
-            "cell" -> field.get(row,col).toString
+            Json.obj(
+              "row" -> row,
+              "col" -> col,
+              "cell" -> field.get(row, col).toString
+            )
           }
         )
       )
