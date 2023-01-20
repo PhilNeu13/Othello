@@ -32,6 +32,12 @@ class GUI(using controller: ControllerInterface, playerQ: PlayerQueueInterface)
     contents += new MenuItem(Action("Redo") {
       controller.doAndNotify(controller.redo)
     })
+    contents += new MenuItem(Action("Save") {
+      controller.doAndNotify(controller.save)
+    })
+    contents += new MenuItem(Action("Load") {
+      controller.doAndNotify(controller.load)
+    })
   }
   contents = new BorderPanel {
     add(

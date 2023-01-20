@@ -5,6 +5,7 @@ import de.htwg.se.othello.model.matrixComponent.{Matrix, MatrixInterface}
 
 trait FieldInterface {
 
+    val size: Int
     def bar(cellWidth: Int, cellNum: Int): String
     def cells(row: Int, cellWidth: Int): String
     def mesh(cellWidth: Int): String
